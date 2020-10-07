@@ -1,0 +1,46 @@
+{
+  "definitions": {
+    "EmailInput": {
+      "properties": {
+        "placeholderText": {
+          "title": "admin/editor.newsletter-input-email.placeholderText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "inputLabel": {
+          "title": "admin/editor.newsletter-input-email.inputLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "errorMessage": {
+          "title": "admin/editor.newsletter-input-email.errorMessage.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
+    "NameInput": {
+      "properties": {
+        "placeholderText": {
+          "title": "admin/editor.newsletter-input-name.placeholderText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "inputLabel": {
+          "title": "admin/editor.newsletter-input-name.inputLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "errorMessage": {
+          "title": "admin/editor.newsletter-input-name.errorMessage.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
+    "NewsletterSubmit": {
+      "properties": {
+        "submitButtonLabel": {
+          "title": "admin/editor.newsletter-submit.submitButtonLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    }
+  }
+}
