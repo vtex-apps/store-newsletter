@@ -1,4 +1,18 @@
 {
-  "admin/test": "teste",
-  "store/test": "teste"
+  "admin/editor.store-newsletter.title": "Newsletter",
+  "admin/editor.newsletter-email-input.title": "Entrada de correo electrónico",
+  "admin/editor.newsletter-email-input.placeholderText.title": "Marcador de posición de entrada de correo electrónico",
+  "admin/editor.newsletter-email-input.inputLabel.title": "Etiqueta para la entrada de correo electrónico",
+  "admin/editor.newsletter-email-input.errorMessage.title": "Mensaje de error \"Correo electrónico no válido\"",
+  "admin/editor.newsletter-name-input.title": "Entrada del nombre",
+  "admin/editor.newsletter-name-input.placeholderText.title": "Marcador de posición de entrada de nombre",
+  "admin/editor.newsletter-name-input.inputLabel.title": "Etiqueta para la entrada del nombre",
+  "admin/editor.newsletter-name-input.errorMessage.title": "Mensaje de error \"Nombre no válido\"",
+  "admin/editor.newsletter-submit.title": "Enviar formulario de boletín",
+  "admin/editor.newsletter-submit.submitButtonLabel.title": "Etiqueta para el botón enviar",
+  "store/newsletter-email-input.placeholderText.default": "Ingrese su dirección de correo electrónico",
+  "store/newsletter-email-input.errorMessage.default": "Dirección de correo electrónico inválida",
+  "store/newsletter-name-input.placeholderText.default": "Introduzca su nombre",
+  "store/newsletter-name-input.errorMessage.default": "Nombre inválido",
+  "store/newsletter-submit.submitButtonLabel.default": "Suscribir"
 }

@@ -1,4 +1,18 @@
 {
-  "admin/test": "teste",
-  "store/test": "teste"
+  "admin/editor.store-newsletter.title": "Newsletter",
+  "admin/editor.newsletter-email-input.title": "Campo de email",
+  "admin/editor.newsletter-email-input.placeholderText.title": "Placeholder para campo de email",
+  "admin/editor.newsletter-email-input.inputLabel.title": "Label para o campo de entrada de email",
+  "admin/editor.newsletter-email-input.errorMessage.title": "Mensagem de erro",
+  "admin/editor.newsletter-name-input.title": "Campo de nome",
+  "admin/editor.newsletter-name-input.placeholderText.title": "Placeholder para campo de nome",
+  "admin/editor.newsletter-name-input.inputLabel.title": "Label para o campo de entrada de nome",
+  "admin/editor.newsletter-name-input.errorMessage.title": "Mensagem de erro",
+  "admin/editor.newsletter-submit.title": "Botão de submissão do formulário",
+  "admin/editor.newsletter-submit.submitButtonLabel.title": "Texto do botão de submissão",
+  "store/newsletter-email-input.placeholderText.default": "Endereço de email",
+  "store/newsletter-email-input.errorMessage.default": "Email inválido",
+  "store/newsletter-name-input.placeholderText.default": "Nome",
+  "store/newsletter-name-input.errorMessage.default": "Nome inválido",
+  "store/newsletter-submit.submitButtonLabel.default": "Inscrever-se"
 }
