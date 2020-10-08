@@ -3,7 +3,7 @@
   "name": "store-newsletter",
   "version": "0.0.0",
   "title": "Store Newsletter",
-  "description": "CHANGE_ME",
+  "description": "Components used to create a newsletter form.",
   "builders": {
     "react": "3.x",
     "messages": "1.x",
