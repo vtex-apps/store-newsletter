@@ -76,7 +76,10 @@ function Newsletter(props: PropsWithChildren<Props>) {
 
     const mutationVariables = receivedNameBlock ? { name, email } : { email }
 
-    subscribeMutation({ variables: mutationVariables })
+    // The '.catch' here is to prevent 'unhandled promise rejection'.
+    // Proper error handling for this is implemented by NewsletterContext
+    // using the variables returned by the 'useMutation' call it performs.
+    subscribeMutation({ variables: mutationVariables }).catch(() => {})
   }
 
   return (
