@@ -6,7 +6,7 @@ import { Button } from 'vtex.styleguide'
 import { useNewsletterState } from './components/NewsletterContext'
 
 interface Props {
-  submitButtonLabel: string
+  submitButtonLabel?: string
 }
 
 const CSS_HANDLES = ['formSubmitContainer'] as const

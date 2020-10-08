@@ -10,9 +10,9 @@ import {
 } from './components/NewsletterContext'
 
 interface Props {
-  placeholderText: string
-  inputLabel: string
-  errorMessage: string
+  placeholderText?: string
+  inputLabel?: string
+  errorMessage?: string
 }
 
 const CSS_HANDLES = ['nameInputContainer', 'nameInputLabel'] as const
