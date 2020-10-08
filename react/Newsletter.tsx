@@ -1,6 +1,6 @@
 import React, { ComponentType, PropsWithChildren, FormEvent } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
-import { useChildBlock } from 'vtex.render-runtime/react/components/ChildBlock'
+import { useChildBlock } from 'vtex.render-runtime'
 
 import {
   NewsletterContextProvider,
