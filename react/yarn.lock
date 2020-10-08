@@ -5040,10 +5040,6 @@ verror@1.10.0:
   version "0.7.1"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.native-types@0.7.1/public/@types/vtex.native-types#a197484a2fdcee5c61a6d20ad6c994faa58380f5"
 
-"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.122.1/public/@types/vtex.render-runtime":
-  version "8.122.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.122.1/public/@types/vtex.render-runtime#d790c20d157b42a08f1b90085e1347a52b87441e"
-
 "vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.131.0/public/@types/vtex.styleguide":
   version "9.131.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.131.0/public/@types/vtex.styleguide#ee7b617e95994ada85823e536d35b5edc42fd31c"
