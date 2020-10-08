@@ -1,91 +1,105 @@
-📢 Use this project, [contribute](https://github.com/{OrganizationName}/{AppName}) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+📢 Use this project, [contribute](https://github.com/vtex-apps/store-newsletter) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
-# APP NAME
+# Store Newsletter
 
 <!-- DOCS-IGNORE:start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- DOCS-IGNORE:end -->
 
-Under the app's name, you should explain the topic, giving a **brief description** of its **functionality** in a store when installed.
-
-Next, **add media** (either an image of a GIF) with the rendered components, so that users can better understand how the app works in practice. 
+The Store Newsletter app provides a set of blocks that you can use to create a newsletter subscription form.
 
 ![Media Placeholder](https://user-images.githubusercontent.com/52087100/71204177-42ca4f80-227e-11ea-89e6-e92e65370c69.png)
 
-## Configuration 
+## Configuration
 
-In this section, you first must **add the primary instructions** that will allow users to use the app's blocks in their store, such as:
+1. Add `vtex.store-newsletter` to your app's dependencies in the `manifest.json` file:
 
-1. Adding the app as a theme dependency in the `manifest.json` file;
-2. Declaring the app's main block in a given theme template or inside another block from the theme.
+```json
+{
+  "dependencies": {
+    "vtex.store-newsletter": "0.x"
+  }
+}
+```
 
-Remember to add a table with all blocks exported by the app and their descriptions. You can verify an example of it on the [Search Result documentation](https://vtex.io/docs/components/all/vtex.search-result@3.56.1/). 
+Now, you are able to use all blocks exported by the `store-newsletter` app. Check out the full list below:
 
-Next, add the **props table** containing your block's props. 
+| Block name               | Description                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `newsletter-form`        | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Top level block that provides context to all its children. |
+| `newsletter-input-email` | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders an email input in the newsletter form.             |
+| `newsletter-input-name`  | Renders an name input in the newsletter form.                                                                        |
+| `newsletter-submit`      | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Submit button for the newsletter form.                     |
 
-If the app exports more than one block, create several tables - one for each block. For example:
+2. In any desired store template, such as the `store.home`, add the `newsletter-form` block and it's children:
 
-### `block-1` props
+```json
+{
+  "store.home": {
+    "children": ["newsletter-form"]
+  },
 
-| Prop name    | Type            | Description    | Default value                                                                                                                               |
-| ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | 
-| `XXXXX`      | `XXXXXX`       | XXXXXXXX         | `XXXXXX`        |
+  "newsletter-form": {
+    "children": [
+      "newsletter-input-email",
+      "newsletter-input-name",
+      "newsletter-submit"
+    ]
+  }
+}
+```
 
+### `newsletter-form` props
 
-### `block-2` props
+| Prop name      | Type    | Description                                                                                                                                                                                              | Default value |
+| -------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `ErrorState`   | `block` | Store Framework block to be rendered if the `subscribeNewsletter` mutation fails. If none is passed, the default `Error` component will be rendered.                                                     | `undefined`   |
+| `SuccessState` | `block` | Store Framework block to be rendered if the `subscribeNewsletter` mutation succeeds. If none is passed, the default `Success` component will be rendered.                                                | `undefined`   |
+| `LoadingState` | `block` | Store Framework block to be rendered while the `subscribeNewsletter` mutation is loading. If none is passed, the default behavior is for the submit button to show a spinner during this loading period. | `undefined`   |
 
-| Prop name    | Type            | Description    | Default value                                                                                                                               |
-| ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | 
-| `XXXXX`      | `XXXXXX`       | XXXXXXXX         | `XXXXXX`        |
+### `newsletter-input-email` props
 
-Prop types are: 
+| Prop name         | Type     | Description                                    | Default value                                                              |
+| ----------------- | -------- | ---------------------------------------------- | -------------------------------------------------------------------------- |
+| `placeholderText` | `string` | Placeholder text for email input.              | `"Enter your email address"` (translated according to the store's locale). |
+| `inputLabel`      | `string` | Label for the email input.                     | `""`                                                                       |
+| `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address"` (translated according to the store's locale).     |
 
-- `string` 
-- `enum` 
-- `number` 
-- `boolean` 
-- `object` 
-- `array` 
+### `newsletter-input-name` props
 
-When documenting a prop whose type is `object` or `array` another prop table will be needed. You can create it following the example below:
+| Prop name         | Type     | Description                                       | Default value                                                     |
+| ----------------- | -------- | ------------------------------------------------- | ----------------------------------------------------------------- |
+| `placeholderText` | `string` | Placeholder text for name input.                  | `"Enter your name"` (translated according to the store's locale). |
+| `inputLabel`      | `string` | Label for the name input.                         | `""`                                                              |
+| `errorMessage`    | `string` | Error message to be shown if name input is empty. | `"Invalid name"` (translated according to the store's locale).    |
 
-- `propName` object:
+### `newsletter-submit` props
 
-| Prop name    | Type            | Description    | Default value                                                                                                                               |
-| ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | 
-| `XXXXX`      | `XXXXXX`       | XXXXXXXX         | `XXXXXX`        |
-
-
-Remember to also use this Configuration section to  **showcase any necessary disclaimer** related to the app and its blocks, such as the different behavior it may display during its configuration. 
-
-## Modus Operandi *(not mandatory)*
-
-There are scenarios in which an app can behave differently in a store, according to how it was added to the catalog, for example. It's crucial to go through these **behavioral changes** in this section, allowing users to fully understand the **practical application** of the app in their store.
-
-If you feel compelled to give further details about the app, such as it's **relationship with the VTEX admin**, don't hesitate to use this section. 
+| Prop name           | Type     | Description                                 | Default value                                               |
+| ------------------- | -------- | ------------------------------------------- | ----------------------------------------------------------- |
+| `submitButtonLabel` | `string` | Text displayed inside of the submit button. | `"Subscribe"` (translated according to the store's locale). |
 
 ## Customization
 
-The first thing that should be present in this section is the sentence below, showing users the recipe pertaining to CSS customization in apps:
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-`In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).`
-
-Thereafter, you should add a single column table with the available CSS handles for the app, like the one below. Note that the Handles must be ordered alphabetically.
-
-| CSS Handles |
-| ----------- | 
-| `XXXXX` | 
-| `XXXXX` | 
-| `XXXXX` | 
-| `XXXXX` | 
-| `XXXXX` |
-
-
-If there are none, add the following sentence instead:
-
-`No CSS Handles are available yet for the app customization.`
+| CSS Handles               |
+| ------------------------- |
+| `defaultErrorContainer`   |
+| `defaultErrorMessage`     |
+| `defaultSuccessContainer` |
+| `defaultSuccessMessage`   |
+| `emailInputContainer`     |
+| `emailInputLabel`         |
+| `formSubmitContainer`     |
+| `nameInputContainer`      |
+| `nameInputLabel`          |
+| `newsletterContainer`     |
+| `newsletterForm`          |
 
 <!-- DOCS-IGNORE:start -->
 
@@ -98,17 +112,9 @@ Thanks goes to these wonderful people:
 <!-- markdownlint-disable -->
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
 <!-- DOCS-IGNORE:end -->
-
----- 
-
-Check out some documentation models that are already live: 
-- [Breadcrumb](https://github.com/vtex-apps/breadcrumb)
-- [Image](https://vtex.io/docs/components/general/vtex.store-components/image)
-- [Condition Layout](https://vtex.io/docs/components/all/vtex.condition-layout@1.1.6/)
-- [Add To Cart Button](https://vtex.io/docs/components/content-blocks/vtex.add-to-cart-button@0.9.0/)
-- [Store Form](https://vtex.io/docs/components/all/vtex.store-form@0.3.4/)
