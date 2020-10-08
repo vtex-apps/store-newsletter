@@ -14,5 +14,7 @@
   "store/newsletter-input-email.errorMessage.default": "Email inválido",
   "store/newsletter-input-name.placeholderText.default": "Nome",
   "store/newsletter-input-name.errorMessage.default": "Nome inválido",
-  "store/newsletter-submit.submitButtonLabel.default": "Inscrever-se"
+  "store/newsletter-submit.submitButtonLabel.default": "Inscrever-se",
+  "store/newsletter-submit-success.default": "Obrigado!",
+  "store/newsletter-submit-error.default": "Algo deu errado e não conseguimos efetuar seu cadastro."
 }

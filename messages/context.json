@@ -14,5 +14,7 @@
   "store/newsletter-input-email.errorMessage.default": "Invalid email address",
   "store/newsletter-input-name.placeholderText.default": "Enter your name",
   "store/newsletter-input-name.errorMessage.default": "Invalid name",
-  "store/newsletter-submit.submitButtonLabel.default": "Subscribe"
+  "store/newsletter-submit.submitButtonLabel.default": "Subscribe",
+  "store/newsletter-submit-success.default": "Thanks for subscribing!",
+  "store/newsletter-submit-error.default": "Sorry, something went wrong."
 }

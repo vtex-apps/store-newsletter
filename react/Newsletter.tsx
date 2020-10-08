@@ -7,6 +7,8 @@ import {
   useNewsletterDispatch,
   useNewsletterState,
 } from './components/NewsletterContext'
+import DefaultSuccess from './components/Success'
+import DefaultError from './components/Error'
 
 interface Props {
   ErrorState?: ComponentType
@@ -45,11 +47,11 @@ function Newsletter(props: PropsWithChildren<Props>) {
   }
 
   if (mutationError) {
-    return (ErrorState && <ErrorState />) || null
+    return ErrorState ? <ErrorState /> : <DefaultError />
   }
 
   if (mutationResult) {
-    return (SuccessState && <SuccessState />) || null
+    return SuccessState ? <SuccessState /> : <DefaultSuccess />
   }
 
   function handleSubmit(e: FormEvent) {
