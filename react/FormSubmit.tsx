@@ -16,12 +16,12 @@ function FormSubmit(props: Props) {
     submitButtonLabel = 'store/newsletter-submit.submitButtonLabel.default',
   } = props
 
-  const { mutationLoading } = useNewsletterState()
+  const { submission } = useNewsletterState()
   const handles = useCssHandles(CSS_HANDLES)
 
   return (
     <div className={handles.formSubmitContainer}>
-      <Button type="submit" isLoading={mutationLoading}>
+      <Button type="submit" isLoading={submission.loading}>
         <IOMessage id={submitButtonLabel} />
       </Button>
     </div>

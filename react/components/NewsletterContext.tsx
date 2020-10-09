@@ -10,10 +10,29 @@ import { MutationFunction, useMutation } from 'react-apollo'
 
 import subscribeNewsletterMutation from '../graphql/subscribeNewsletter.gql'
 
+interface SubmissionState {
+  error: undefined | ApolloError
+  data: { subscribeNewsletter: boolean } | undefined
+  loading: boolean
+}
+
+interface State {
+  name: string
+  email: string
+  invalidEmail: boolean
+  invalidName: boolean
+  submission: SubmissionState
+  subscribe: MutationFunction<
+    { subscribeNewsletter: boolean },
+    { email: string; name?: string }
+  >
+}
+
 interface UpdateEmailAction {
   type: 'UPDATE_EMAIL'
   value: string
 }
+
 interface UpdateNameAction {
   type: 'UPDATE_NAME'
   value: string
@@ -31,22 +50,7 @@ interface SetInvalidNameAction {
 
 interface SetMutationValues {
   type: 'SET_MUTATION_VALUES'
-  value: {
-    mutationResult: boolean | undefined
-    mutationLoading: boolean
-    mutationError: ApolloError | undefined
-  }
-}
-
-interface State {
-  name: string
-  email: string
-  invalidEmail: boolean
-  invalidName: boolean
-  mutationResult: boolean | undefined
-  mutationLoading: boolean
-  mutationError: ApolloError | undefined
-  subscribeMutation: MutationFunction<boolean, { email: string; name?: string }>
+  value: SubmissionState
 }
 
 type Action =
@@ -89,9 +93,7 @@ function newsletterContextReducer(state: State, action: Action): State {
     case 'SET_MUTATION_VALUES': {
       return {
         ...state,
-        mutationLoading: action.value.mutationLoading,
-        mutationError: action.value.mutationError,
-        mutationResult: action.value.mutationResult,
+        submission: action.value,
       }
     }
 
@@ -101,31 +103,31 @@ function newsletterContextReducer(state: State, action: Action): State {
 }
 
 function NewsletterContextProvider(props: PropsWithChildren<{}>) {
-  const [
-    subscribeToNewsletter,
-    { data: mutationResult, loading, error },
-  ] = useMutation<boolean, { email: string; name?: string }>(
-    subscribeNewsletterMutation
-  )
+  const [subscribeToNewsletter, { data, loading, error }] = useMutation<
+    { subscribeNewsletter: boolean },
+    { email: string; name?: string }
+  >(subscribeNewsletterMutation)
 
   const [state, dispatch] = useReducer(newsletterContextReducer, {
     name: '',
     email: '',
     invalidEmail: false,
     invalidName: false,
-    mutationLoading: loading,
-    mutationError: error,
-    subscribeMutation: subscribeToNewsletter,
-    mutationResult,
+    subscribe: subscribeToNewsletter,
+    submission: {
+      data,
+      loading,
+      error,
+    },
   })
 
   // Update mutation variables in State
   useEffect(() => {
     dispatch({
       type: 'SET_MUTATION_VALUES',
-      value: { mutationLoading: loading, mutationError: error, mutationResult },
+      value: { loading, error, data },
     })
-  }, [error, loading, mutationResult])
+  }, [error, loading, data])
 
   return (
     <NewsletterStateContext.Provider value={state}>

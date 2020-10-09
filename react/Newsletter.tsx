@@ -16,7 +16,7 @@ interface Props {
   LoadingState?: ComponentType
 }
 
-const CSS_HANDLES = ['newsletterForm', 'newsletterContainer'] as const
+const CSS_HANDLES = ['newsletterForm'] as const
 
 const EMAIL_REGEX = /^[A-z0-9+_-]+(?:\.[A-z0-9+_-]+)*@(?:[A-z0-9](?:[A-z0-9-]*[A-z0-9])?\.)+[A-z0-9](?:[A-z0-9-]*[A-z0-9])?$/
 
@@ -29,10 +29,8 @@ function Newsletter(props: PropsWithChildren<Props>) {
   const {
     email,
     name,
-    mutationError,
-    mutationResult,
-    mutationLoading,
-    subscribeMutation,
+    submission,
+    subscribe: subscribeMutation,
   } = useNewsletterState()
 
   const dispatch = useNewsletterDispatch()
@@ -42,15 +40,15 @@ function Newsletter(props: PropsWithChildren<Props>) {
     useChildBlock({ id: 'newsletter-input-name' })
   )
 
-  if (mutationLoading && LoadingState) {
+  if (submission.loading && LoadingState) {
     return <LoadingState />
   }
 
-  if (mutationError) {
+  if (submission.error) {
     return ErrorState ? <ErrorState /> : <DefaultError />
   }
 
-  if (mutationResult) {
+  if (submission.data?.subscribeNewsletter) {
     return SuccessState ? <SuccessState /> : <DefaultSuccess />
   }
 
@@ -83,11 +81,9 @@ function Newsletter(props: PropsWithChildren<Props>) {
   }
 
   return (
-    <div className={handles.newsletterContainer}>
-      <form className={handles.newsletterForm} onSubmit={handleSubmit}>
-        {children}
-      </form>
-    </div>
+    <form className={handles.newsletterForm} onSubmit={handleSubmit}>
+      {children}
+    </form>
   )
 }
 
