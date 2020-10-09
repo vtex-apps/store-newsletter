@@ -21,7 +21,7 @@ The Store Newsletter app provides a set of blocks that you can use to create a n
 ```json
 {
   "dependencies": {
-    "vtex.store-newsletter": "0.x"
+    "vtex.store-newsletter": "1.x"
   }
 }
 ```
@@ -55,11 +55,11 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 ### `newsletter-form` props
 
-| Prop name      | Type    | Description                                                                                                                                                                                              | Default value |
-| -------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `ErrorState`   | `block` | Store Framework block to be rendered if the `subscribeNewsletter` mutation fails. If none is passed, the default `Error` component will be rendered.                                                     | `undefined`   |
-| `SuccessState` | `block` | Store Framework block to be rendered if the `subscribeNewsletter` mutation succeeds. If none is passed, the default `Success` component will be rendered.                                                | `undefined`   |
-| `LoadingState` | `block` | Store Framework block to be rendered while the `subscribeNewsletter` mutation is loading. If none is passed, the default behavior is for the submit button to show a spinner during this loading period. | `undefined`   |
+| Prop name      | Type    | Description                                                                                                                                                               | Default value |
+| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `ErrorState`   | `block` | Block to be rendered if the submission of the form fails. If none is passed, a default error component will be rendered.                                                  | `undefined`   |
+| `SuccessState` | `block` | Block to be rendered if form submission succeeds. If none is passed, a default success component will be rendered.                                                        | `undefined`   |
+| `LoadingState` | `block` | Block to be rendered while the form submission is loading. If none is passed, the default behavior is for the submit button to show a spinner during this loading period. | `undefined`   |
 
 ### `newsletter-input-email` props
 
@@ -89,16 +89,13 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 
 | CSS Handles               |
 | ------------------------- |
-| `defaultErrorContainer`   |
 | `defaultErrorMessage`     |
-| `defaultSuccessContainer` |
 | `defaultSuccessMessage`   |
 | `emailInputContainer`     |
 | `emailInputLabel`         |
 | `formSubmitContainer`     |
 | `nameInputContainer`      |
 | `nameInputLabel`          |
-| `newsletterContainer`     |
 | `newsletterForm`          |
 
 <!-- DOCS-IGNORE:start -->
