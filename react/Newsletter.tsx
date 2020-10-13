@@ -26,12 +26,7 @@ function validateEmail(email: string) {
 
 function Newsletter(props: PropsWithChildren<Props>) {
   const { ErrorState, SuccessState, LoadingState, children } = props
-  const {
-    email,
-    name,
-    submission,
-    subscribe: subscribeMutation,
-  } = useNewsletterState()
+  const { email, name, submission, subscribe } = useNewsletterState()
 
   const dispatch = useNewsletterDispatch()
   const handles = useCssHandles(CSS_HANDLES)
@@ -77,7 +72,7 @@ function Newsletter(props: PropsWithChildren<Props>) {
     // The '.catch' here is to prevent 'unhandled promise rejection'.
     // Proper error handling for this is implemented by NewsletterContext
     // using the variables returned by the 'useMutation' call it performs.
-    subscribeMutation({ variables: mutationVariables }).catch(() => {})
+    subscribe({ variables: mutationVariables }).catch(() => {})
   }
 
   return (
