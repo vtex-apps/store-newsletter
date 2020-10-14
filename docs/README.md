@@ -65,23 +65,23 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 | Prop name         | Type     | Description                                    | Default value                                                              |
 | ----------------- | -------- | ---------------------------------------------- | -------------------------------------------------------------------------- |
-| `placeholderText` | `string` | Placeholder text for email input.              | `"Enter your email address"` (translated according to the store's locale). |
+| `placeholderText` | `string` | Placeholder text for email input.              | `Enter your email address` (translated according to the store's locale). |
 | `inputLabel`      | `string` | Label for the email input.                     | `""`                                                                       |
-| `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address"` (translated according to the store's locale).     |
+| `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address` (translated according to the store's locale).     |
 
 ### `newsletter-input-name` props
 
 | Prop name         | Type     | Description                                       | Default value                                                     |
 | ----------------- | -------- | ------------------------------------------------- | ----------------------------------------------------------------- |
-| `placeholderText` | `string` | Placeholder text for name input.                  | `"Enter your name"` (translated according to the store's locale). |
+| `placeholderText` | `string` | Placeholder text for name input.                  | `Enter your name` (translated according to the store's locale). |
 | `inputLabel`      | `string` | Label for the name input.                         | `""`                                                              |
-| `errorMessage`    | `string` | Error message to be shown if name input is empty. | `"Invalid name"` (translated according to the store's locale).    |
+| `errorMessage`    | `string` | Error message to be shown if name input is empty. | `Invalid name` (translated according to the store's locale).    |
 
 ### `newsletter-submit` props
 
 | Prop name           | Type     | Description                                 | Default value                                               |
 | ------------------- | -------- | ------------------------------------------- | ----------------------------------------------------------- |
-| `submitButtonLabel` | `string` | Text displayed inside of the submit button. | `"Subscribe"` (translated according to the store's locale). |
+| `submitButtonLabel` | `string` | Text displayed on the submit button. | `Subscribe` (translated according to the store's locale). |
 
 ## Customization
 
