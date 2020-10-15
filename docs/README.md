@@ -65,7 +65,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 | Prop name         | Type     | Description                                    | Default value                                                              |
 | ----------------- | -------- | ---------------------------------------------- | -------------------------------------------------------------------------- |
-| `placeholderText` | `string` | Placeholder text for email input.              | `Enter your email address` (translated according to the store's locale). |
+| `placeholderText` | `string` | Placeholder text for the email input.              | `Enter your email address` (translated according to the store's locale). |
 | `inputLabel`      | `string` | Label for the email input.                     | `""`                                                                       |
 | `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address` (translated according to the store's locale).     |
 
