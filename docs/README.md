@@ -12,7 +12,7 @@
 
 The Store Newsletter app provides a set of blocks that you can use to create a newsletter subscription form.
 
-![Media Placeholder](https://user-images.githubusercontent.com/52087100/71204177-42ca4f80-227e-11ea-89e6-e92e65370c69.png)
+![newsletter-demo](https://user-images.githubusercontent.com/27777263/96277790-1c169b80-0fab-11eb-99cb-6b55ea7f5b7f.png)
 
 ## Configuration
 
