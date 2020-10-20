@@ -43,6 +43,7 @@ function FormEmailInput(props: Props) {
       </label>
       <Input
         id="newsletter-input-email"
+        type="email"
         name="newsletter"
         onChange={handleChange}
         errorMessage={
