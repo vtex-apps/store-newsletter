@@ -5,9 +5,15 @@ import {
   NewsletterContextProvider,
   useNewsletterDispatch,
   useNewsletterState,
+  MutationArguments,
 } from './components/NewsletterContext'
 import DefaultSuccess from './components/Success'
 import DefaultError from './components/Error'
+import {
+  validateEmail,
+  validatePhoneNumber,
+  validateUserName,
+} from './modules/formValidators'
 
 interface Props {
   ErrorState?: ComponentType
@@ -17,17 +23,9 @@ interface Props {
 
 const CSS_HANDLES = ['newsletterForm'] as const
 
-// https://regex101.com/r/926sxf/1
-// If you change the regex, don't forget to go to the link above, update it there and save.
-const EMAIL_REGEX = /^[A-z0-9"+_-]+(?:\.[A-z0-9+_-]+)*@(?:[A-z0-9](?:[A-z0-9-]*[A-z0-9])?\.)+[A-z0-9](?:[A-z0-9-]*[A-z0-9])?$/
-
-function validateEmail(email: string) {
-  return EMAIL_REGEX.test(email)
-}
-
 function Newsletter(props: PropsWithChildren<Props>) {
   const { ErrorState, SuccessState, LoadingState, children } = props
-  const { email, name, submission, subscribe } = useNewsletterState()
+  const { email, name, phone, submission, subscribe } = useNewsletterState()
 
   const dispatch = useNewsletterDispatch()
   const handles = useCssHandles(CSS_HANDLES)
@@ -44,14 +42,30 @@ function Newsletter(props: PropsWithChildren<Props>) {
     return SuccessState ? <SuccessState /> : <DefaultSuccess />
   }
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault()
+  function generateMutationVariables() {
+    const variables: MutationArguments = { email, fields: {} }
 
+    if (name) {
+      variables.fields.name = name
+    }
+
+    if (phone) {
+      variables.fields.phone = phone
+    }
+
+    return variables
+  }
+
+  function validateFormInputs() {
     const isEmailValid = validateEmail(email)
 
     // name === null is valid because it means there is no name input in the
     // newsletter form.
-    const isNameValid = name === null || name?.length > 0
+    const isNameValid = name === null || validateUserName(name)
+
+    // phone === null is valid because it means there is no phone input in the
+    // newsletter form.
+    const isPhoneValid = phone === null || validatePhoneNumber(phone)
 
     dispatch({
       type: 'SET_INVALID_EMAIL',
@@ -63,13 +77,24 @@ function Newsletter(props: PropsWithChildren<Props>) {
       value: !isNameValid,
     })
 
-    if (!isEmailValid || !isNameValid) {
+    dispatch({
+      type: 'SET_INVALID_PHONE',
+      value: !isPhoneValid,
+    })
+
+    return isNameValid && isPhoneValid && isEmailValid
+  }
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+
+    const areUserInputsValid = validateFormInputs()
+
+    if (!areUserInputsValid) {
       return
     }
 
-    const mutationVariables = isNameValid
-      ? { fields: { name }, email }
-      : { email }
+    const mutationVariables = generateMutationVariables()
 
     // The '.catch' here is to prevent 'unhandled promise rejection'.
     // Proper error handling for this is implemented by NewsletterContext

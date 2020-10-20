@@ -16,15 +16,25 @@ interface SubmissionState {
   loading: boolean
 }
 
-interface State {
-  name: string | null
+export interface MutationArguments {
   email: string
+  fields: {
+    name?: string
+    phone?: string
+  }
+}
+
+interface State {
+  email: string
+  name: string | null
+  phone: string | null
   invalidEmail: boolean
   invalidName: boolean
+  invalidPhone: boolean
   submission: SubmissionState
   subscribe: MutationFunction<
     { subscribeNewsletter: boolean },
-    { email: string; name?: string }
+    MutationArguments
   >
 }
 
@@ -38,6 +48,11 @@ interface UpdateNameAction {
   value: string
 }
 
+interface UpdatePhoneAction {
+  type: 'UPDATE_PHONE'
+  value: string
+}
+
 interface SetInvalidEmailAction {
   type: 'SET_INVALID_EMAIL'
   value: boolean
@@ -45,6 +60,11 @@ interface SetInvalidEmailAction {
 
 interface SetInvalidNameAction {
   type: 'SET_INVALID_NAME'
+  value: boolean
+}
+
+interface SetInvalidPhoneAction {
+  type: 'SET_INVALID_PHONE'
   value: boolean
 }
 
@@ -56,9 +76,11 @@ interface SetMutationValues {
 type Action =
   | UpdateEmailAction
   | UpdateNameAction
+  | UpdatePhoneAction
   | SetInvalidEmailAction
   | SetMutationValues
   | SetInvalidNameAction
+  | SetInvalidPhoneAction
 type Dispatch = (action: Action) => void
 
 const NewsletterStateContext = createContext<State | undefined>(undefined)
@@ -78,6 +100,12 @@ function newsletterContextReducer(state: State, action: Action): State {
         name: action.value,
       }
 
+    case 'UPDATE_PHONE':
+      return {
+        ...state,
+        phone: action.value,
+      }
+
     case 'SET_INVALID_EMAIL':
       return {
         ...state,
@@ -88,6 +116,12 @@ function newsletterContextReducer(state: State, action: Action): State {
       return {
         ...state,
         invalidName: action.value,
+      }
+
+    case 'SET_INVALID_PHONE':
+      return {
+        ...state,
+        invalidPhone: action.value,
       }
 
     case 'SET_MUTATION_VALUES': {
@@ -105,14 +139,16 @@ function newsletterContextReducer(state: State, action: Action): State {
 function NewsletterContextProvider(props: PropsWithChildren<{}>) {
   const [subscribeToNewsletter, { data, loading, error }] = useMutation<
     { subscribeNewsletter: boolean },
-    { email: string; name?: string }
+    MutationArguments
   >(subscribeNewsletterMutation)
 
   const [state, dispatch] = useReducer(newsletterContextReducer, {
-    name: null,
     email: '',
+    name: null,
+    phone: null,
     invalidEmail: false,
     invalidName: false,
+    invalidPhone: false,
     subscribe: subscribeToNewsletter,
     submission: {
       data,
