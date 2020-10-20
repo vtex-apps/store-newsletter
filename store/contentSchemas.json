@@ -34,6 +34,23 @@
       }
     },
 
+    "PhoneInput": {
+      "properties": {
+        "placeholderText": {
+          "title": "admin/editor.newsletter-input-phone.placeholderText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "inputLabel": {
+          "title": "admin/editor.newsletter-input-phone.inputLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "errorMessage": {
+          "title": "admin/editor.newsletter-input-phone.errorMessage.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
     "NewsletterSubmit": {
       "properties": {
         "submitButtonLabel": {

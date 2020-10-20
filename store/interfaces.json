@@ -15,6 +15,12 @@
       "$ref": "app:vtex.store-newsletter#/definitions/NameInput"
     }
   },
+  "newsletter-input-phone": {
+    "component": "FormPhoneInput",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/PhoneInput"
+    }
+  },
   "newsletter-submit": {
     "component": "FormSubmit",
     "content": {
