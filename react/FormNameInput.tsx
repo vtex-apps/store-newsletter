@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useEffect } from 'react'
 import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
 import { IOMessage, formatIOMessage } from 'vtex.native-types'
@@ -28,6 +28,10 @@ function FormNameInput(props: Props) {
   const dispatch = useNewsletterDispatch()
   const handles = useCssHandles(CSS_HANDLES)
   const intl = useIntl()
+
+  // Initialize `name` context value to signal that there is a FormNameInput
+  // being rendered inside the newsletter form.
+  useEffect(() => dispatch({ type: 'UPDATE_NAME', value: '' }), [dispatch])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: 'UPDATE_NAME', value: e.target.value.trim() })

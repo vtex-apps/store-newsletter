@@ -1,6 +1,5 @@
 import React, { ComponentType, PropsWithChildren, FormEvent } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
-import { useChildBlock } from 'vtex.render-runtime'
 
 import {
   NewsletterContextProvider,
@@ -33,10 +32,6 @@ function Newsletter(props: PropsWithChildren<Props>) {
   const dispatch = useNewsletterDispatch()
   const handles = useCssHandles(CSS_HANDLES)
 
-  const receivedNameBlock = Boolean(
-    useChildBlock({ id: 'newsletter-input-name' })
-  )
-
   if (submission.loading && LoadingState) {
     return <LoadingState />
   }
@@ -53,7 +48,10 @@ function Newsletter(props: PropsWithChildren<Props>) {
     e.preventDefault()
 
     const isEmailValid = validateEmail(email)
-    const isNameValid = name.length > 0 || !receivedNameBlock
+
+    // name === null is valid because it means there is no name input in the
+    // newsletter form.
+    const isNameValid = name === null || name?.length > 0
 
     dispatch({
       type: 'SET_INVALID_EMAIL',
@@ -69,7 +67,9 @@ function Newsletter(props: PropsWithChildren<Props>) {
       return
     }
 
-    const mutationVariables = receivedNameBlock ? { name, email } : { email }
+    const mutationVariables = isNameValid
+      ? { fields: { name }, email }
+      : { email }
 
     // The '.catch' here is to prevent 'unhandled promise rejection'.
     // Proper error handling for this is implemented by NewsletterContext

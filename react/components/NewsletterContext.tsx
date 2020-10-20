@@ -17,7 +17,7 @@ interface SubmissionState {
 }
 
 interface State {
-  name: string
+  name: string | null
   email: string
   invalidEmail: boolean
   invalidName: boolean
@@ -109,7 +109,7 @@ function NewsletterContextProvider(props: PropsWithChildren<{}>) {
   >(subscribeNewsletterMutation)
 
   const [state, dispatch] = useReducer(newsletterContextReducer, {
-    name: '',
+    name: null,
     email: '',
     invalidEmail: false,
     invalidName: false,
