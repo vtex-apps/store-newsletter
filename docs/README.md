@@ -31,6 +31,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 | `newsletter-form`        | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Top level block that provides context to all its children. |
 | `newsletter-input-email` | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders an email input in the newsletter form.             |
 | `newsletter-input-name`  | Renders an name input in the newsletter form.                                                                        |
+| `newsletter-input-phone` | Renders an phone input in the newsletter form.                                                                       |
 | `newsletter-submit`      | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders a `Submit` button for the newsletter form.         |
 
 2. In the desired store template, such as the `store.home`, add the `newsletter-form` block and its desired children:
@@ -61,40 +62,50 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 ### `newsletter-input-email` props
 
-| Prop name         | Type     | Description                                    | Default value                                                              |
-| ----------------- | -------- | ---------------------------------------------- | -------------------------------------------------------------------------- |
-| `placeholderText` | `string` | Placeholder text for the email input.              | `Enter your email address` (translated according to the store's locale). |
-| `inputLabel`      | `string` | Label for the email input.                     | `null`                                                                       |
-| `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address` (translated according to the store's locale).     |
+| Prop name         | Type     | Description                                    | Default value                                                            |
+| ----------------- | -------- | ---------------------------------------------- | ------------------------------------------------------------------------ |
+| `placeholderText` | `string` | Placeholder text for the email input.          | `Enter your email address` (translated according to the store's locale). |
+| `inputLabel`      | `string` | Label for the email input.                     | `null`                                                                   |
+| `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address` (translated according to the store's locale).    |
 
 ### `newsletter-input-name` props
 
-| Prop name         | Type     | Description                                       | Default value                                                     |
-| ----------------- | -------- | ------------------------------------------------- | ----------------------------------------------------------------- |
+| Prop name         | Type     | Description                                       | Default value                                                   |
+| ----------------- | -------- | ------------------------------------------------- | --------------------------------------------------------------- |
 | `placeholderText` | `string` | Placeholder text for name input.                  | `Enter your name` (translated according to the store's locale). |
-| `inputLabel`      | `string` | Label for the name input.                         | `null`                                                              |
+| `inputLabel`      | `string` | Label for the name input.                         | `null`                                                          |
 | `errorMessage`    | `string` | Error message to be shown if name input is empty. | `Invalid name` (translated according to the store's locale).    |
+
+### `newsletter-input-phone` props
+
+| Prop name         | Type     | Description                                        | Default value                                                    |
+| ----------------- | -------- | -------------------------------------------------- | ---------------------------------------------------------------- |
+| `placeholderText` | `string` | Placeholder text for phone input.                  | `Enter your phone` (translated according to the store's locale). |
+| `inputLabel`      | `string` | Label for the phone input.                         | `null`                                                           |
+| `errorMessage`    | `string` | Error message to be shown if phone input is empty. | `Invalid phone` (translated according to the store's locale).    |
 
 ### `newsletter-submit` props
 
-| Prop name           | Type     | Description                                 | Default value                                               |
-| ------------------- | -------- | ------------------------------------------- | ----------------------------------------------------------- |
+| Prop name           | Type     | Description                          | Default value                                             |
+| ------------------- | -------- | ------------------------------------ | --------------------------------------------------------- |
 | `submitButtonLabel` | `string` | Text displayed on the submit button. | `Subscribe` (translated according to the store's locale). |
 
 ## Customization
 
 In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-| CSS Handles               |
-| ------------------------- |
-| `defaultErrorMessage`     |
-| `defaultSuccessMessage`   |
-| `emailInputContainer`     |
-| `emailInputLabel`         |
-| `formSubmitContainer`     |
-| `nameInputContainer`      |
-| `nameInputLabel`          |
-| `newsletterForm`          |
+| CSS Handles             |
+| ----------------------- |
+| `defaultErrorMessage`   |
+| `defaultSuccessMessage` |
+| `emailInputContainer`   |
+| `emailInputLabel`       |
+| `formSubmitContainer`   |
+| `nameInputContainer`    |
+| `nameInputLabel`        |
+| `phoneInputContainer`   |
+| `phoneInputLabel`       |
+| `newsletterForm`        |
 
 <!-- DOCS-IGNORE:start -->
 
