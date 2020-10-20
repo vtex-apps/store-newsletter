@@ -4,6 +4,7 @@ import { render, fireEvent, waitFor } from '@vtex/test-tools/react'
 import Newsletter from '../Newsletter'
 import FormEmailInput from '../FormEmailInput'
 import FormNameInput from '../FormNameInput'
+import FormPhoneInput from '../FormPhoneInput'
 import FormSubmit from '../FormSubmit'
 import subscribeNewsletter from '../graphql/subscribeNewsletter.gql'
 
@@ -12,6 +13,9 @@ const EMAIL_PLACEHOLDER_MESSAGE_ID =
 
 const NAME_PLACEHOLDER_MESSAGE_ID =
   'store/newsletter-input-name.placeholderText.default'
+
+const PHONE_PLACEHOLDER_MESSAGE_ID =
+  'store/newsletter-input-phone.placeholderText.default'
 
 describe('Basic rendering', () => {
   it('should render complete newsletter subscribe form', () => {
@@ -76,13 +80,17 @@ describe('Form validation', () => {
 describe('Reacting to mutation results', () => {
   it('should show success message if everything went well', async () => {
     const validEmail = 'foobar@vtex.com'
+    const validPhone = '+5511123456789'
     const validName = 'Ted'
 
     const mocks = [
       {
         request: {
           query: subscribeNewsletter,
-          variables: { email: validEmail, name: validName },
+          variables: {
+            email: validEmail,
+            fields: { name: validName, phone: validPhone },
+          },
         },
         result: {
           data: {
@@ -96,6 +104,7 @@ describe('Reacting to mutation results', () => {
       <Newsletter>
         <FormEmailInput />
         <FormNameInput />
+        <FormPhoneInput />
         <FormSubmit />
       </Newsletter>,
       {
@@ -105,11 +114,13 @@ describe('Reacting to mutation results', () => {
 
     const mockedEmailInput = getByPlaceholderText(EMAIL_PLACEHOLDER_MESSAGE_ID)
     const mockedNameInput = getByPlaceholderText(NAME_PLACEHOLDER_MESSAGE_ID)
+    const mockedPhoneInput = getByPlaceholderText(PHONE_PLACEHOLDER_MESSAGE_ID)
 
     const submit = getByText('Subscribe')
 
     fireEvent.change(mockedEmailInput, { target: { value: validEmail } })
     fireEvent.change(mockedNameInput, { target: { value: validName } })
+    fireEvent.change(mockedPhoneInput, { target: { value: validPhone } })
 
     fireEvent.click(submit)
 
