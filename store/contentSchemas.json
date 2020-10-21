@@ -51,6 +51,15 @@
       }
     },
 
+    "ConfirmationCheckbox": {
+      "properties": {
+        "checkboxLabel": {
+          "title": "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
     "NewsletterSubmit": {
       "properties": {
         "submitButtonLabel": {

@@ -28,6 +28,7 @@ interface State {
   email: string
   name: string | null
   phone: string | null
+  confirmation: boolean | null
   invalidEmail: boolean
   invalidName: boolean
   invalidPhone: boolean
@@ -51,6 +52,11 @@ interface UpdateNameAction {
 interface UpdatePhoneAction {
   type: 'UPDATE_PHONE'
   value: string
+}
+
+interface UpdateConfirmationAction {
+  type: 'UPDATE_CONFIRMATION'
+  value: boolean
 }
 
 interface SetInvalidEmailAction {
@@ -77,6 +83,7 @@ type Action =
   | UpdateEmailAction
   | UpdateNameAction
   | UpdatePhoneAction
+  | UpdateConfirmationAction
   | SetInvalidEmailAction
   | SetMutationValues
   | SetInvalidNameAction
@@ -104,6 +111,12 @@ function newsletterContextReducer(state: State, action: Action): State {
       return {
         ...state,
         phone: action.value,
+      }
+
+    case 'UPDATE_CONFIRMATION':
+      return {
+        ...state,
+        confirmation: action.value,
       }
 
     case 'SET_INVALID_EMAIL':
@@ -146,6 +159,7 @@ function NewsletterContextProvider(props: PropsWithChildren<{}>) {
     email: '',
     name: null,
     phone: null,
+    confirmation: null,
     invalidEmail: false,
     invalidName: false,
     invalidPhone: false,

@@ -12,6 +12,8 @@
   "admin/editor.newsletter-input-phone.placeholderText.title": "Marcador de posición de entrada de teléfono",
   "admin/editor.newsletter-input-phone.inputLabel.title": "Etiqueta para la entrada del teléfono",
   "admin/editor.newsletter-input-phone.errorMessage.title": "Mensaje de error \"teléfono no válido\"",
+  "admin/editor.newsletter-checkbox-confirmation.title": "Confirmación del boletín",
+  "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title": "Etiqueta para la casilla de verificación de confirmación",
   "admin/editor.newsletter-submit.title": "Enviar formulario de boletín",
   "admin/editor.newsletter-submit.submitButtonLabel.title": "Etiqueta para el botón enviar",
   "store/newsletter-input-email.placeholderText.default": "Ingrese su dirección de correo electrónico",
@@ -20,6 +22,7 @@
   "store/newsletter-input-name.errorMessage.default": "Nombre inválido",
   "store/newsletter-input-phone.placeholderText.default": "Ingrese su número telefónico",
   "store/newsletter-input-phone.errorMessage.default": "Numero de telefono invalido",
+  "store/newsletter-checkbox-confirmation.checkboxLabel.default": "Acepto recibir este boletín.",
   "store/newsletter-submit.submitButtonLabel.default": "Suscribir",
   "store/newsletter-submit-success.default": "¡Gracias por suscribirte!",
   "store/newsletter-submit-error.default": "Perdón, algo salió mal."

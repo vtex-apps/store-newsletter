@@ -12,6 +12,8 @@
   "admin/editor.newsletter-input-phone.placeholderText.title": "Phone input placeholder",
   "admin/editor.newsletter-input-phone.inputLabel.title": "Label for the phone input",
   "admin/editor.newsletter-input-phone.errorMessage.title": "\"Invalid phone\" error message",
+  "admin/editor.newsletter-checkbox-confirmation.title": "Newsletter confirmation",
+  "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title": "Label for the confirmation checkbox",
   "admin/editor.newsletter-submit.title": "Newsletter form submit",
   "admin/editor.newsletter-submit.submitButtonLabel.title": "Label for the submit button",
   "store/newsletter-input-email.placeholderText.default": "Enter your email address",
@@ -20,6 +22,7 @@
   "store/newsletter-input-name.errorMessage.default": "Invalid name",
   "store/newsletter-input-phone.placeholderText.default": "Enter your phone number",
   "store/newsletter-input-phone.errorMessage.default": "Invalid phone number",
+  "store/newsletter-checkbox-confirmation.checkboxLabel.default": "I agree to received this newsletter.",
   "store/newsletter-submit.submitButtonLabel.default": "Subscribe",
   "store/newsletter-submit-success.default": "Thanks for subscribing!",
   "store/newsletter-submit-error.default": "Sorry, something went wrong."

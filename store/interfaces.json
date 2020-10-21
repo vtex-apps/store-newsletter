@@ -21,6 +21,12 @@
       "$ref": "app:vtex.store-newsletter#/definitions/PhoneInput"
     }
   },
+  "newsletter-checkbox-confirmation": {
+    "component": "FormConfirmationCheckbox",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/ConfirmationCheckbox"
+    }
+  },
   "newsletter-submit": {
     "component": "FormSubmit",
     "content": {

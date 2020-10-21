@@ -12,6 +12,8 @@
   "admin/editor.newsletter-input-phone.placeholderText.title": "Placeholder para campo de telefone",
   "admin/editor.newsletter-input-phone.inputLabel.title": "Label para o campo de entrada de telefone",
   "admin/editor.newsletter-input-phone.errorMessage.title": "Mensagem de erro",
+  "admin/editor.newsletter-checkbox-confirmation.title": "Confirmação",
+  "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title": "Label para a checkbox de confirmação",
   "admin/editor.newsletter-submit.title": "Botão de submissão do formulário",
   "admin/editor.newsletter-submit.submitButtonLabel.title": "Texto do botão de submissão",
   "store/newsletter-input-email.placeholderText.default": "Endereço de email",
@@ -20,6 +22,7 @@
   "store/newsletter-input-name.errorMessage.default": "Nome inválido",
   "store/newsletter-input-phone.placeholderText.default": "Telefone",
   "store/newsletter-input-phone.errorMessage.default": "Telefone inválido",
+  "store/newsletter-checkbox-confirmation.checkboxLabel.default": "Eu aceito receber essa newsletter.",
   "store/newsletter-submit.submitButtonLabel.default": "Inscrever-se",
   "store/newsletter-submit-success.default": "Obrigado!",
   "store/newsletter-submit-error.default": "Algo deu errado e não conseguimos efetuar seu cadastro."
