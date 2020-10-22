@@ -16,21 +16,12 @@ function FormSubmit(props: Props) {
     submitButtonLabel = 'store/newsletter-submit.submitButtonLabel.default',
   } = props
 
-  const { submission, confirmation } = useNewsletterState()
+  const { submission } = useNewsletterState()
   const handles = useCssHandles(CSS_HANDLES)
-
-  // Makes sure the submit button cannot be pressed if there is a
-  // 'newsletter-checkbox-confirmation' in the newsletter form and
-  // it's not checked.
-  const shouldBeDisabled = confirmation === false
 
   return (
     <div className={handles.formSubmitContainer}>
-      <Button
-        disabled={shouldBeDisabled}
-        type="submit"
-        isLoading={submission.loading}
-      >
+      <Button type="submit" isLoading={submission.loading}>
         <IOMessage id={submitButtonLabel} />
       </Button>
     </div>
