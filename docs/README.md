@@ -26,13 +26,14 @@ The Store Newsletter app provides a set of blocks that you can use to create a n
 
 Now, you are able to use all blocks exported by the `store-newsletter` app. Check out the full list below:
 
-| Block name               | Description                                                                                                          |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| `newsletter-form`        | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Top level block that provides context to all its children. |
-| `newsletter-input-email` | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders an email input in the newsletter form.             |
-| `newsletter-input-name`  | Renders an name input in the newsletter form.                                                                        |
-| `newsletter-input-phone` | Renders an phone input in the newsletter form.                                                                       |
-| `newsletter-submit`      | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders a `Submit` button for the newsletter form.         |
+| Block name                         | Description                                                                                                          |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `newsletter-form`                  | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Top level block that provides context to all its children. |
+| `newsletter-input-email`           | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders an email input in the newsletter form.             |
+| `newsletter-input-name`            | Renders an name input in the newsletter form.                                                                        |
+| `newsletter-input-phone`           | Renders an phone input in the newsletter form.                                                                       |
+| `newsletter-checkbox-confirmation` | Renders a confirmation checkbox in the newsletter form.                                                              |
+| `newsletter-submit`                | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders a `Submit` button for the newsletter form.         |
 
 2. In the desired store template, such as the `store.home`, add the `newsletter-form` block and its desired children:
 
@@ -84,6 +85,12 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 | `inputLabel`      | `string` | Label for the phone input.                         | `null`                                                           |
 | `errorMessage`    | `string` | Error message to be shown if phone input is empty. | `Invalid phone` (translated according to the store's locale).    |
 
+### `newsletter-checkbox-confirmation` props
+
+| Prop name       | Type     | Description                          | Default value                                                                        |
+| --------------- | -------- | ------------------------------------ | ------------------------------------------------------------------------------------ |
+| `checkboxLabel` | `string` | Label for the confirmation checkbox. | `I agree to received this newsletter.` (translated according to the store's locale). |
+
 ### `newsletter-submit` props
 
 | Prop name           | Type     | Description                          | Default value                                             |
@@ -94,18 +101,20 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-| CSS Handles             |
-| ----------------------- |
-| `defaultErrorMessage`   |
-| `defaultSuccessMessage` |
-| `emailInputContainer`   |
-| `emailInputLabel`       |
-| `formSubmitContainer`   |
-| `nameInputContainer`    |
-| `nameInputLabel`        |
-| `phoneInputContainer`   |
-| `phoneInputLabel`       |
-| `newsletterForm`        |
+| CSS Handles                     |
+| ------------------------------- |
+| `confirmationCheckboxContainer` |
+| `confirmationCheckboxLabel`     |
+| `defaultErrorMessage`           |
+| `defaultSuccessMessage`         |
+| `emailInputContainer`           |
+| `emailInputLabel`               |
+| `formSubmitContainer`           |
+| `nameInputContainer`            |
+| `nameInputLabel`                |
+| `newsletterForm`                |
+| `phoneInputContainer`           |
+| `phoneInputLabel`               |
 
 <!-- DOCS-IGNORE:start -->
 
