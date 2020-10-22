@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect } from 'react'
+import { useIntl } from 'react-intl'
 import { Checkbox } from 'vtex.styleguide'
-import { IOMessage } from 'vtex.native-types'
+import { formatIOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
 
 import {
@@ -12,10 +13,7 @@ interface Props {
   checkboxLabel?: string
 }
 
-const CSS_HANDLES = [
-  'confirmationCheckboxContainer',
-  'confirmationCheckboxLabel',
-] as const
+const CSS_HANDLES = ['confirmationCheckboxContainer'] as const
 
 function FormConfirmationCheckbox(props: Props) {
   const {
@@ -24,6 +22,8 @@ function FormConfirmationCheckbox(props: Props) {
 
   const dispatch = useNewsletterDispatch()
   const { confirmation } = useNewsletterState()
+
+  const intl = useIntl()
   const handles = useCssHandles(CSS_HANDLES)
 
   // Initialize `confirmation` context value to signal that there is a
@@ -38,15 +38,10 @@ function FormConfirmationCheckbox(props: Props) {
 
   return (
     <div className={handles.confirmationCheckboxContainer}>
-      <label
-        className={handles.confirmationCheckboxLabel}
-        htmlFor="newsletter-checkbox-confirmation"
-      >
-        <IOMessage id={checkboxLabel} />
-      </label>
       <Checkbox
         id="newsletter-checkbox-confirmation"
         name="newsletter-confirmation"
+        label={formatIOMessage({ id: checkboxLabel, intl })}
         onChange={handleChange}
         checked={confirmation}
         required

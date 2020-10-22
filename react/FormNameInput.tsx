@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect } from 'react'
 import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
-import { IOMessage, formatIOMessage } from 'vtex.native-types'
+import { formatIOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
 
 import {
@@ -15,7 +15,7 @@ interface Props {
   errorMessage?: string
 }
 
-const CSS_HANDLES = ['nameInputContainer', 'nameInputLabel'] as const
+const CSS_HANDLES = ['nameInputContainer'] as const
 
 function FormNameInput(props: Props) {
   const {
@@ -39,13 +39,11 @@ function FormNameInput(props: Props) {
 
   return (
     <div className={handles.nameInputContainer}>
-      <label className={handles.nameInputLabel} htmlFor="newsletter-input-name">
-        <IOMessage id={inputLabel} />
-      </label>
       <Input
         id="newsletter-input-name"
         name="newsletter"
         onChange={handleChange}
+        label={formatIOMessage({ id: inputLabel, intl })}
         errorMessage={
           invalidName ? formatIOMessage({ id: errorMessage, intl }) : null
         }

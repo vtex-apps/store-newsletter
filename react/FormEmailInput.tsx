@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react'
 import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
-import { IOMessage, formatIOMessage } from 'vtex.native-types'
+import { formatIOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
 
 import {
@@ -15,7 +15,7 @@ interface Props {
   errorMessage?: string
 }
 
-const CSS_HANDLES = ['emailInputContainer', 'emailInputLabel'] as const
+const CSS_HANDLES = ['emailInputContainer'] as const
 
 function FormEmailInput(props: Props) {
   const {
@@ -35,16 +35,11 @@ function FormEmailInput(props: Props) {
 
   return (
     <div className={handles.emailInputContainer}>
-      <label
-        className={handles.emailInputLabel}
-        htmlFor="newsletter-input-email"
-      >
-        <IOMessage id={inputLabel} />
-      </label>
       <Input
         id="newsletter-input-email"
         type="email"
         name="newsletter"
+        label={formatIOMessage({ id: inputLabel, intl })}
         onChange={handleChange}
         errorMessage={
           invalidEmail ? formatIOMessage({ id: errorMessage, intl }) : null

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect } from 'react'
 import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
-import { IOMessage, formatIOMessage } from 'vtex.native-types'
+import { formatIOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
 
 import {
@@ -15,7 +15,7 @@ interface Props {
   errorMessage?: string
 }
 
-const CSS_HANDLES = ['phoneInputContainer', 'phoneInputLabel'] as const
+const CSS_HANDLES = ['phoneInputContainer'] as const
 
 function FormPhoneInput(props: Props) {
   const {
@@ -39,16 +39,11 @@ function FormPhoneInput(props: Props) {
 
   return (
     <div className={handles.phoneInputContainer}>
-      <label
-        className={handles.phoneInputLabel}
-        htmlFor="newsletter-input-phone"
-      >
-        <IOMessage id={inputLabel} />
-      </label>
       <Input
         id="newsletter-input-phone"
         name="newsletter"
         type="tel"
+        label={formatIOMessage({ id: inputLabel, intl })}
         onChange={handleChange}
         errorMessage={
           invalidPhone ? formatIOMessage({ id: errorMessage, intl }) : null
