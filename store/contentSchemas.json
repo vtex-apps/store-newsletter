@@ -56,6 +56,14 @@
         "checkboxLabel": {
           "title": "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title",
           "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "firstLink": {
+          "title": "admin/editor.newsletter-checkout-confirmation.firstLink.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "secondLink": {
+          "title": "admin/editor.newsletter-checkout-confirmation.secondLink.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
         }
       }
     },

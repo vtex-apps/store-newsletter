@@ -11,6 +11,8 @@ import {
 
 interface Props {
   checkboxLabel?: string
+  firstLink?: string
+  secondLink?: string
 }
 
 const CSS_HANDLES = ['confirmationCheckboxContainer'] as const
@@ -18,6 +20,8 @@ const CSS_HANDLES = ['confirmationCheckboxContainer'] as const
 function FormConfirmationCheckbox(props: Props) {
   const {
     checkboxLabel = 'store/newsletter-checkbox-confirmation.checkboxLabel.default',
+    firstLink,
+    secondLink,
   } = props
 
   const dispatch = useNewsletterDispatch()
@@ -41,7 +45,10 @@ function FormConfirmationCheckbox(props: Props) {
       <Checkbox
         id="newsletter-checkbox-confirmation"
         name="newsletter-confirmation"
-        label={formatIOMessage({ id: checkboxLabel, intl })}
+        label={formatIOMessage(
+          { id: checkboxLabel, intl },
+          { firstLink, secondLink }
+        )}
         onChange={handleChange}
         checked={confirmation}
         required

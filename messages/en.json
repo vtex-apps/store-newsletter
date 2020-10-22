@@ -14,6 +14,8 @@
   "admin/editor.newsletter-input-phone.errorMessage.title": "\"Invalid phone\" error message",
   "admin/editor.newsletter-checkbox-confirmation.title": "Newsletter confirmation",
   "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title": "Label for the confirmation checkbox",
+  "admin/editor.newsletter-checkout-confirmation.firstLink.title": "First link to be interpolated into the label",
+  "admin/editor.newsletter-checkout-confirmation.secondLink.title": "Second link to be interpolated into the label",
   "admin/editor.newsletter-submit.title": "Newsletter form submit",
   "admin/editor.newsletter-submit.submitButtonLabel.title": "Label for the submit button",
   "store/newsletter-input-email.placeholderText.default": "Enter your email address",

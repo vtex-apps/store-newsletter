@@ -14,6 +14,8 @@
   "admin/editor.newsletter-input-phone.errorMessage.title": "Mensaje de error \"teléfono no válido\"",
   "admin/editor.newsletter-checkbox-confirmation.title": "Confirmación del boletín",
   "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title": "Etiqueta para la casilla de verificación de confirmación",
+  "admin/editor.newsletter-checkout-confirmation.firstLink.title": "Primer enlace que se interpolará en la etiqueta",
+  "admin/editor.newsletter-checkout-confirmation.secondLink.title": "Segundo enlace que se interpolará en la etiqueta",
   "admin/editor.newsletter-submit.title": "Enviar formulario de boletín",
   "admin/editor.newsletter-submit.submitButtonLabel.title": "Etiqueta para el botón enviar",
   "store/newsletter-input-email.placeholderText.default": "Ingrese su dirección de correo electrónico",
