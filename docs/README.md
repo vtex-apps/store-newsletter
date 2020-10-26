@@ -87,9 +87,18 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 ### `newsletter-checkbox-confirmation` props
 
-| Prop name       | Type     | Description                          | Default value                                                                        |
-| --------------- | -------- | ------------------------------------ | ------------------------------------------------------------------------------------ |
-| `checkboxLabel` | `string` | Label for the confirmation checkbox. | `I agree to received this newsletter.` (translated according to the store's locale). |
+| Prop name       | Type     | Description                                                                                                                                                                                                                          | Default value                                                                        |
+| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `checkboxLabel` | `string` | Label for the confirmation checkbox. This prop supports the [ICU Message Format](https://format-message.github.io/icu-message-format-for-translators/), exposing two variables for you to interpolate: `firstLink` and `secondLink`. | `I agree to received this newsletter.` (translated according to the store's locale). |
+| `firstLink`     | `Object` | Configures the `firstLink` variable to be interpolated by the text passed to `checkboxLabel`. checkbox.                                                                                                                              | `undefined`.                                                                         |
+| `secondLink`    | `Object` | Configures the `secondLink` variable to be interpolated by the text passed to `checkboxLabel`. checkbox.                                                                                                                             | `undefined`                                                                          |
+
+- `firstLink` and `secondLink` objects:
+
+| Prop name | Type     | Description                 | Default value |
+| --------- | -------- | --------------------------- | ------------- |
+| `url`     | `string` | The link's URL.             | `undefined`   |
+| `text`    | `string` | Text displayed on the link. | `undefined`   |
 
 ### `newsletter-submit` props
 
