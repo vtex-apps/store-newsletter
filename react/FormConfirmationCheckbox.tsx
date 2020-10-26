@@ -1,33 +1,41 @@
 import React, { ChangeEvent, useEffect } from 'react'
-import { useIntl } from 'react-intl'
 import { Checkbox } from 'vtex.styleguide'
-import { formatIOMessage } from 'vtex.native-types'
+import { IOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
 
 import {
   useNewsletterDispatch,
   useNewsletterState,
 } from './components/NewsletterContext'
+import LabelLink from './components/LabelLink'
 
 interface Props {
   checkboxLabel?: string
-  firstLink?: string
-  secondLink?: string
+  firstLabelLink?: {
+    url: string
+    text: string
+  }
+  secondLabelLink?: {
+    url: string
+    text: string
+  }
 }
 
-const CSS_HANDLES = ['confirmationCheckboxContainer'] as const
+const CSS_HANDLES = [
+  'confirmationCheckboxContainer',
+  'confirmationCheckboxLabel',
+] as const
 
 function FormConfirmationCheckbox(props: Props) {
   const {
     checkboxLabel = 'store/newsletter-checkbox-confirmation.checkboxLabel.default',
-    firstLink,
-    secondLink,
+    firstLabelLink,
+    secondLabelLink,
   } = props
 
   const dispatch = useNewsletterDispatch()
   const { confirmation } = useNewsletterState()
 
-  const intl = useIntl()
   const handles = useCssHandles(CSS_HANDLES)
 
   // Initialize `confirmation` context value to signal that there is a
@@ -45,10 +53,27 @@ function FormConfirmationCheckbox(props: Props) {
       <Checkbox
         id="newsletter-checkbox-confirmation"
         name="newsletter-confirmation"
-        label={formatIOMessage(
-          { id: checkboxLabel, intl },
-          { firstLink, secondLink }
-        )}
+        label={
+          <IOMessage
+            id={checkboxLabel}
+            values={{
+              firstLink: firstLabelLink && (
+                <LabelLink
+                  text={firstLabelLink.text}
+                  url={firstLabelLink.url}
+                  ordinalPosition="first"
+                />
+              ),
+              secondLink: secondLabelLink && (
+                <LabelLink
+                  text="Privacy Policy"
+                  url={secondLabelLink.url}
+                  ordinalPosition="second"
+                />
+              ),
+            }}
+          />
+        }
         onChange={handleChange}
         checked={confirmation}
         required

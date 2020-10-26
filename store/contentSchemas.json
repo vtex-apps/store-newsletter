@@ -59,11 +59,29 @@
         },
         "firstLink": {
           "title": "admin/editor.newsletter-checkout-confirmation.firstLink.title",
-          "$ref": "app:vtex.native-types#/definitions/text"
+          "properties": {
+            "url": {
+              "title": "admin/editor.newsletter-checkout-confirmation.firstLink.url",
+              "$ref": "app:vtex.native-types#/definitions/url"
+            },
+            "text": {
+              "title": "admin/editor.newsletter-checkout-confirmation.firstLink.text",
+              "$ref": "app:vtex.native-types#/definitions/text"
+            }
+          }
         },
         "secondLink": {
           "title": "admin/editor.newsletter-checkout-confirmation.secondLink.title",
-          "$ref": "app:vtex.native-types#/definitions/text"
+          "properties": {
+            "url": {
+              "title": "admin/editor.newsletter-checkout-confirmation.secondLink.url",
+              "$ref": "app:vtex.native-types#/definitions/url"
+            },
+            "text": {
+              "title": "admin/editor.newsletter-checkout-confirmation.secondLink.text",
+              "$ref": "app:vtex.native-types#/definitions/text"
+            }
+          }
         }
       }
     },
