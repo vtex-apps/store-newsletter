@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-newsletter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "title": "Store Newsletter",
   "description": "Components used to create a newsletter form.",
   "builders": {
@@ -16,7 +16,9 @@
     "vtex.native-types": "0.x",
     "vtex.store-graphql": "2.x"
   },
-  "registries": ["smartcheckout"],
+  "registries": [
+    "smartcheckout"
+  ],
   "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
