@@ -1,0 +1,98 @@
+{
+  "definitions": {
+    "EmailInput": {
+      "properties": {
+        "placeholderText": {
+          "title": "admin/editor.newsletter-input-email.placeholderText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "inputLabel": {
+          "title": "admin/editor.newsletter-input-email.inputLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "errorMessage": {
+          "title": "admin/editor.newsletter-input-email.errorMessage.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
+    "NameInput": {
+      "properties": {
+        "placeholderText": {
+          "title": "admin/editor.newsletter-input-name.placeholderText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "inputLabel": {
+          "title": "admin/editor.newsletter-input-name.inputLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "errorMessage": {
+          "title": "admin/editor.newsletter-input-name.errorMessage.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
+    "PhoneInput": {
+      "properties": {
+        "placeholderText": {
+          "title": "admin/editor.newsletter-input-phone.placeholderText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "inputLabel": {
+          "title": "admin/editor.newsletter-input-phone.inputLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "errorMessage": {
+          "title": "admin/editor.newsletter-input-phone.errorMessage.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    },
+
+    "ConfirmationCheckbox": {
+      "properties": {
+        "checkboxLabel": {
+          "title": "admin/editor.newsletter-checkout-confirmation.checkboxLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "firstLink": {
+          "title": "admin/editor.newsletter-checkout-confirmation.firstLink.title",
+          "properties": {
+            "url": {
+              "title": "admin/editor.newsletter-checkout-confirmation.firstLink.url",
+              "$ref": "app:vtex.native-types#/definitions/url"
+            },
+            "text": {
+              "title": "admin/editor.newsletter-checkout-confirmation.firstLink.text",
+              "$ref": "app:vtex.native-types#/definitions/text"
+            }
+          }
+        },
+        "secondLink": {
+          "title": "admin/editor.newsletter-checkout-confirmation.secondLink.title",
+          "properties": {
+            "url": {
+              "title": "admin/editor.newsletter-checkout-confirmation.secondLink.url",
+              "$ref": "app:vtex.native-types#/definitions/url"
+            },
+            "text": {
+              "title": "admin/editor.newsletter-checkout-confirmation.secondLink.text",
+              "$ref": "app:vtex.native-types#/definitions/text"
+            }
+          }
+        }
+      }
+    },
+
+    "NewsletterSubmit": {
+      "properties": {
+        "submitButtonLabel": {
+          "title": "admin/editor.newsletter-submit.submitButtonLabel.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        }
+      }
+    }
+  }
+}

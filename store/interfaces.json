@@ -1,0 +1,36 @@
+{
+  "newsletter-form": {
+    "component": "Newsletter",
+    "composition": "children"
+  },
+  "newsletter-input-email": {
+    "component": "FormEmailInput",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/EmailInput"
+    }
+  },
+  "newsletter-input-name": {
+    "component": "FormNameInput",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/NameInput"
+    }
+  },
+  "newsletter-input-phone": {
+    "component": "FormPhoneInput",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/PhoneInput"
+    }
+  },
+  "newsletter-checkbox-confirmation": {
+    "component": "FormConfirmationCheckbox",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/ConfirmationCheckbox"
+    }
+  },
+  "newsletter-submit": {
+    "component": "FormSubmit",
+    "content": {
+      "$ref": "app:vtex.store-newsletter#/definitions/NewsletterSubmit"
+    }
+  }
+}

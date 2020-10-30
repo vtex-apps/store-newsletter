@@ -1,0 +1,4 @@
+mutation subscribeNewsletter($email: String, $fields: NewsletterFieldsInput)
+  @context(provider: "vtex.store-graphql") {
+  subscribeNewsletter(email: $email, fields: $fields)
+}
