@@ -7,10 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added custom pixel event for newsletter tracking purposes.
+
 ## [1.0.1] - 2020-11-03
+
 ### Fixed
+
 - Props listed with the wrong names in the docs.
 
 ## [1.0.0] - 2020-10-30
+
 ### Added
+
 - Initial release.

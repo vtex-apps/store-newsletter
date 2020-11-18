@@ -14,6 +14,7 @@ import {
   validatePhoneNumber,
   validateUserName,
 } from './modules/formValidators'
+import { triggerPixelNewsletterEvent } from './modules/customPixelEvents'
 
 interface Props {
   ErrorState?: ComponentType
@@ -93,6 +94,12 @@ function Newsletter(props: PropsWithChildren<Props>) {
     if (!areUserInputsValid) {
       return
     }
+
+    triggerPixelNewsletterEvent({
+      name,
+      email,
+      phone,
+    })
 
     const mutationVariables = generateMutationVariables()
 
