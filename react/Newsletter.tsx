@@ -1,6 +1,8 @@
 import React, { ComponentType, PropsWithChildren, FormEvent } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
+import { usePixel } from 'vtex.pixel-manager'
+import type { PixelEventTypes } from 'vtex.pixel-manager'
 
 import {
   NewsletterContextProvider,
@@ -32,6 +34,7 @@ interface Props {
   }>
   LoadingState?: ComponentType
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  customEventId?: string
 }
 
 interface CustomField {
@@ -70,7 +73,15 @@ function generateMutationVariables({
 }
 
 function Newsletter(props: PropsWithChildren<Props>) {
-  const { ErrorState, SuccessState, LoadingState, classes, children } = props
+  const {
+    ErrorState,
+    SuccessState,
+    LoadingState,
+    classes,
+    children,
+    customEventId,
+  } = props
+
   const {
     email,
     name,
@@ -81,6 +92,7 @@ function Newsletter(props: PropsWithChildren<Props>) {
   } = useNewsletterState()
 
   const dispatch = useNewsletterDispatch()
+  const { push } = usePixel()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   if (submission.loading && LoadingState) {
@@ -144,6 +156,25 @@ function Newsletter(props: PropsWithChildren<Props>) {
     if (!areUserInputsValid) {
       return
     }
+
+    const pixelData = {
+      name,
+      email,
+      phone,
+    }
+
+    const pixelEvent: PixelEventTypes.PixelData = customEventId
+      ? {
+          id: customEventId,
+          event: 'newsletterSubscription',
+          data: pixelData,
+        }
+      : {
+          event: 'newsletterSubscription',
+          data: pixelData,
+        }
+
+    push(pixelEvent)
 
     const mutationVariables = generateMutationVariables({
       email,
