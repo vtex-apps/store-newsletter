@@ -66,7 +66,7 @@ function FormConfirmationCheckbox(props: Props) {
               ),
               secondLink: secondLabelLink && (
                 <LabelLink
-                  text="Privacy Policy"
+                  text={secondLabelLink.text}
                   url={secondLabelLink.url}
                   ordinalPosition="second"
                 />
