@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Hard Coded "Privacy Policy" in FormConfirmationCheckbox
+
 ## [1.0.1] - 2020-11-03
+
 ### Fixed
 - Props listed with the wrong names in the docs.
 
