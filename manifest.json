@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-newsletter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "title": "Store Newsletter",
   "description": "Components used to create a newsletter form.",
   "builders": {
