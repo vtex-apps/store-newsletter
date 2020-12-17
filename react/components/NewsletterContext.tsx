@@ -30,7 +30,7 @@ interface CustomField {
   value: string | number | boolean | null
 }
 
-interface State {
+export interface State {
   email: string
   name: string | null
   phone: string | null
