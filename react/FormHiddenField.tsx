@@ -1,4 +1,3 @@
-import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 
 import { useNewsletterDispatch } from './components/NewsletterContext'
