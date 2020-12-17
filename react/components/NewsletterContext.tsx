@@ -19,15 +19,22 @@ interface SubmissionState {
 export interface MutationArguments {
   email: string
   fields: {
+    [index: string]: string | number | boolean | undefined | null
     name?: string
     phone?: string
   }
 }
 
-export interface State {
+interface CustomField {
+  name: string
+  value: string | number | boolean | null
+}
+
+interface State {
   email: string
   name: string | null
   phone: string | null
+  customFields: CustomField[] | null
   confirmation: boolean | null
   invalidEmail: boolean
   invalidName: boolean
@@ -41,37 +48,42 @@ export interface State {
 
 interface UpdateEmailAction {
   type: 'UPDATE_EMAIL'
-  value: string
+  value: State['email']
 }
 
 interface UpdateNameAction {
   type: 'UPDATE_NAME'
-  value: string
+  value: State['name']
 }
 
 interface UpdatePhoneAction {
   type: 'UPDATE_PHONE'
-  value: string
+  value: State['phone']
 }
 
 interface UpdateConfirmationAction {
   type: 'UPDATE_CONFIRMATION'
-  value: boolean
+  value: State['confirmation']
 }
 
 interface SetInvalidEmailAction {
   type: 'SET_INVALID_EMAIL'
-  value: boolean
+  value: State['invalidEmail']
 }
 
 interface SetInvalidNameAction {
   type: 'SET_INVALID_NAME'
-  value: boolean
+  value: State['invalidName']
 }
 
 interface SetInvalidPhoneAction {
   type: 'SET_INVALID_PHONE'
-  value: boolean
+  value: State['invalidPhone']
+}
+
+interface SetCustomValuesAction {
+  type: 'SET_CUSTOM_VALUES'
+  value: State['customFields']
 }
 
 interface SetMutationValues {
@@ -88,6 +100,7 @@ type Action =
   | SetMutationValues
   | SetInvalidNameAction
   | SetInvalidPhoneAction
+  | SetCustomValuesAction
 type Dispatch = (action: Action) => void
 
 const NewsletterStateContext = createContext<State | undefined>(undefined)
@@ -144,6 +157,13 @@ function newsletterContextReducer(state: State, action: Action): State {
       }
     }
 
+    case 'SET_CUSTOM_VALUES': {
+      return {
+        ...state,
+        customFields: action.value,
+      }
+    }
+
     default:
       return state
   }
@@ -159,6 +179,7 @@ function NewsletterContextProvider(props: PropsWithChildren<{}>) {
     email: '',
     name: null,
     phone: null,
+    customFields: null,
     confirmation: null,
     invalidEmail: false,
     invalidName: false,
