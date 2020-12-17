@@ -3,6 +3,9 @@
     "component": "Newsletter",
     "composition": "children"
   },
+  "newsletter-form-hidden-field": {
+    "component": "FormHiddenField"
+  },
   "newsletter-input-email": {
     "component": "FormEmailInput",
     "content": {
