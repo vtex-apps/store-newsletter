@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 
 import { useNewsletterDispatch } from './NewsletterContext'
@@ -9,7 +10,7 @@ interface CustomFieldInput {
 }
 
 interface Props {
-  customFields?: CustomFieldInput[]
+  customFields: CustomFieldInput[]
 }
 
 interface ResolvedCustomField {
@@ -17,46 +18,35 @@ interface ResolvedCustomField {
   value: string | number | boolean | null
 }
 
-function FormHiddenField({ customFields }: Props) {
+function FormHiddenField({ customFields = [] }: Props) {
   const dispatch = useNewsletterDispatch()
   const runtime = useRuntime()
 
-  if (customFields) {
-    const resolvedCustomFields = customFields.map((customField) => {
-      const resolvedCustomField: ResolvedCustomField = {
-        name: customField.fieldName,
-        value: null,
-      }
+  const resolvedCustomFields = customFields.map((customField) => {
+    const resolvedCustomField: ResolvedCustomField = {
+      name: customField.fieldName,
+      value: null,
+    }
 
-      const { dynamicValue } = customField
+    const { dynamicValue } = customField
 
-      if (customField.value) {
-        resolvedCustomField.value = customField.value
+    if (customField.value) {
+      resolvedCustomField.value = customField.value
+    } else if (dynamicValue === 'bindingUrl') {
+      resolvedCustomField.value = runtime.binding?.canonicalBaseAddress ?? null
+    } else if (dynamicValue === 'bindingId') {
+      resolvedCustomField.value = runtime.binding?.id ?? null
+    }
 
-        return resolvedCustomField
-      }
+    return resolvedCustomField
+  })
 
-      if (dynamicValue === 'bindingUrl') {
-        resolvedCustomField.value =
-          runtime.binding?.canonicalBaseAddress ?? null
-
-        return resolvedCustomField
-      }
-
-      if (dynamicValue === 'bindingId') {
-        resolvedCustomField.value = runtime.binding?.id ?? null
-
-        return resolvedCustomField
-      }
-
-      return resolvedCustomField
-    })
-
+  useEffect(() => {
     dispatch({
       type: 'SET_CUSTOM_VALUES',
       value: resolvedCustomFields,
     })
-  }
+  }, [resolvedCustomFields, dispatch])
 
   return null
 }
