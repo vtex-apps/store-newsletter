@@ -8,7 +8,7 @@ import {
   useNewsletterState,
   MutationArguments,
   State,
-} from './components/NewsletterContext'
+} from './NewsletterContext'
 import {
   validateEmail,
   validatePhoneNumber,

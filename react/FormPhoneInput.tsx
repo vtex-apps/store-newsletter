@@ -4,10 +4,7 @@ import { Input } from 'vtex.styleguide'
 import { formatIOMessage } from 'vtex.native-types'
 import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
-import {
-  useNewsletterDispatch,
-  useNewsletterState,
-} from './components/NewsletterContext'
+import { useNewsletterDispatch, useNewsletterState } from './NewsletterContext'
 
 const CSS_HANDLES = ['phoneInputContainer'] as const
 

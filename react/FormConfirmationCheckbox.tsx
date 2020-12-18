@@ -3,10 +3,7 @@ import { Checkbox } from 'vtex.styleguide'
 import { IOMessage } from 'vtex.native-types'
 import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
-import {
-  useNewsletterDispatch,
-  useNewsletterState,
-} from './components/NewsletterContext'
+import { useNewsletterDispatch, useNewsletterState } from './NewsletterContext'
 
 const CSS_HANDLES = [
   'confirmationCheckboxContainer',
