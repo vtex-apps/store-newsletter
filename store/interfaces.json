@@ -3,7 +3,7 @@
     "component": "Newsletter",
     "composition": "children"
   },
-  "newsletter-form-hidden-field": {
+  "newsletter-hidden-field": {
     "component": "FormHiddenField"
   },
   "newsletter-input-email": {
