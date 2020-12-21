@@ -105,6 +105,28 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 | `url`     | `string` | The link's URL.             | `undefined`   |
 | `text`    | `string` | Text displayed on the link. | `undefined`   |
 
+### `newsletter-hidden-field` props
+
+| Prop name | Type     | Description                 | Default value |
+| --------- | -------- | --------------------------- | ------------- |
+| `customFields`     | `CustomField[]` | An array of `CustomField` objects.             | `undefined`   |
+
+The `CustomField` object enables you to specify a certain custom user field that should always be sent along with a user's newsletter subscription. It has the following format:
+
+```ts
+interface CustomField {
+  fieldName: string,
+  dynamicValue?: "bindingId" | "bindingUrl",
+  value?: string | number | boolean
+}
+```
+
+- `fieldName` should match the field's name in your Master Data user schema.
+
+- `dynamicValue` currently only supports `bindingId` and `bindingUrl`, and both these values will be calculated by `newsletter-hidden-field` before sending the newsletter subscription data.
+
+- `value` is just a static value that will always be the same, and will always be sent when users submit the newsletter form. You should either use `value` or `dynamicValue`, never both.
+
 ### `newsletter-submit` props
 
 | Prop name           | Type     | Description                          | Default value                                             |
