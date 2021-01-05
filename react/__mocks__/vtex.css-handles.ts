@@ -5,5 +5,8 @@ export const useCssHandles = (cssHandles: string[]) => {
     handles[handle] = handle
   })
 
-  return handles
+  const withModifiers = (baseHandle: string, modifier: string) =>
+    `${baseHandle}--${modifier}`
+
+  return { handles, withModifiers }
 }
