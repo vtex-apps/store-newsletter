@@ -1,5 +1,6 @@
 import React, { ComponentType, PropsWithChildren, FormEvent } from 'react'
-import { useCssHandles } from 'vtex.css-handles'
+import { FormattedMessage } from 'react-intl'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
 import {
   NewsletterContextProvider,
@@ -7,39 +8,54 @@ import {
   useNewsletterState,
   MutationArguments,
 } from './components/NewsletterContext'
-import DefaultSuccess from './components/Success'
-import DefaultError from './components/Error'
 import {
   validateEmail,
   validatePhoneNumber,
   validateUserName,
 } from './modules/formValidators'
 
+export const CSS_HANDLES = [
+  'newsletterForm',
+  'defaultSuccessMessage',
+  'defaultErrorMessage',
+] as const
+
 interface Props {
   ErrorState?: ComponentType
   SuccessState?: ComponentType
   LoadingState?: ComponentType
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
-const CSS_HANDLES = ['newsletterForm'] as const
-
 function Newsletter(props: PropsWithChildren<Props>) {
-  const { ErrorState, SuccessState, LoadingState, children } = props
+  const { ErrorState, SuccessState, LoadingState, classes, children } = props
   const { email, name, phone, submission, subscribe } = useNewsletterState()
 
   const dispatch = useNewsletterDispatch()
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   if (submission.loading && LoadingState) {
     return <LoadingState />
   }
 
   if (submission.error) {
-    return ErrorState ? <ErrorState /> : <DefaultError />
+    return ErrorState ? (
+      <ErrorState />
+    ) : (
+      <p className={handles.defaultErrorMessage}>
+        <FormattedMessage id="store/newsletter-submit-error.default" />
+      </p>
+    )
   }
 
   if (submission.data?.subscribeNewsletter) {
-    return SuccessState ? <SuccessState /> : <DefaultSuccess />
+    return SuccessState ? (
+      <SuccessState />
+    ) : (
+      <p className={handles.defaultSuccessMessage}>
+        <FormattedMessage id="store/newsletter-submit-success.default" />
+      </p>
+    )
   }
 
   function generateMutationVariables() {

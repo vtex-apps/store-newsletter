@@ -1,16 +1,22 @@
 import React, { ChangeEvent, useEffect } from 'react'
 import { Checkbox } from 'vtex.styleguide'
 import { IOMessage } from 'vtex.native-types'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
 import {
   useNewsletterDispatch,
   useNewsletterState,
 } from './components/NewsletterContext'
-import LabelLink from './components/LabelLink'
+
+const CSS_HANDLES = [
+  'confirmationCheckboxContainer',
+  'confirmationCheckboxLabel',
+  'labelLink',
+] as const
 
 interface Props {
   checkboxLabel?: string
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   firstLabelLink?: {
     url: string
     text: string
@@ -21,22 +27,18 @@ interface Props {
   }
 }
 
-const CSS_HANDLES = [
-  'confirmationCheckboxContainer',
-  'confirmationCheckboxLabel',
-] as const
-
 function FormConfirmationCheckbox(props: Props) {
   const {
     checkboxLabel = 'store/newsletter-checkbox-confirmation.checkboxLabel.default',
     firstLabelLink,
     secondLabelLink,
+    classes,
   } = props
 
   const dispatch = useNewsletterDispatch()
   const { confirmation } = useNewsletterState()
 
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   // Initialize `confirmation` context value to signal that there is a
   // FormConfirmationCheckbox being rendered inside the newsletter form.
@@ -57,19 +59,21 @@ function FormConfirmationCheckbox(props: Props) {
           <IOMessage
             id={checkboxLabel}
             values={{
-              firstLink: firstLabelLink && (
-                <LabelLink
-                  text={firstLabelLink.text}
-                  url={firstLabelLink.url}
-                  ordinalPosition="first"
-                />
+              firstLink: (
+                <a
+                  className={withModifiers('labelLink', 'first')}
+                  href={firstLabelLink?.url}
+                >
+                  {firstLabelLink?.text}
+                </a>
               ),
-              secondLink: secondLabelLink && (
-                <LabelLink
-                  text={secondLabelLink.text}
-                  url={secondLabelLink.url}
-                  ordinalPosition="second"
-                />
+              secondLink: (
+                <a
+                  className={withModifiers('labelLink', 'second')}
+                  href={secondLabelLink?.url}
+                >
+                  {secondLabelLink?.text}
+                </a>
               ),
             }}
           />

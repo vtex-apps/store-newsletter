@@ -2,31 +2,33 @@ import React, { ChangeEvent } from 'react'
 import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
 import { formatIOMessage } from 'vtex.native-types'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
 import {
   useNewsletterDispatch,
   useNewsletterState,
 } from './components/NewsletterContext'
 
+const CSS_HANDLES = ['emailInputContainer'] as const
+
 interface Props {
   placeholderText?: string
   inputLabel?: string
   errorMessage?: string
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
-
-const CSS_HANDLES = ['emailInputContainer'] as const
 
 function FormEmailInput(props: Props) {
   const {
     placeholderText = 'store/newsletter-input-email.placeholderText.default',
     errorMessage = 'store/newsletter-input-email.errorMessage.default',
     inputLabel,
+    classes,
   } = props
 
   const { invalidEmail } = useNewsletterState()
   const dispatch = useNewsletterDispatch()
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const intl = useIntl()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
