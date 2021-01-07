@@ -28,7 +28,7 @@ function FormNameInput(props: Props) {
 
   const { invalidName } = useNewsletterState()
   const dispatch = useNewsletterDispatch()
-  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const { withModifiers } = useCssHandles(CSS_HANDLES, { classes })
   const intl = useIntl()
 
   // Initialize `name` context value to signal that there is a FormNameInput
@@ -40,7 +40,12 @@ function FormNameInput(props: Props) {
   }
 
   return (
-    <div className={handles.nameInputContainer}>
+    <div
+      className={`${withModifiers(
+        'nameInputContainer',
+        invalidName ? 'invalid' : ''
+      )}`}
+    >
       <Input
         id="newsletter-input-name"
         name="newsletter"

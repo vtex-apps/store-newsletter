@@ -18,11 +18,24 @@ function FormSubmit(props: Props) {
     classes,
   } = props
 
-  const { submission } = useNewsletterState()
-  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const {
+    submission,
+    invalidEmail,
+    invalidName,
+    invalidPhone,
+  } = useNewsletterState()
+
+  const formHasInvalidFields = invalidEmail || invalidName || invalidPhone
+
+  const { withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   return (
-    <div className={handles.formSubmitContainer}>
+    <div
+      className={`${withModifiers(
+        'formSubmitContainer',
+        formHasInvalidFields ? 'invalid' : ''
+      )}`}
+    >
       <Button type="submit" isLoading={submission.loading}>
         <IOMessage id={submitButtonLabel} />
       </Button>

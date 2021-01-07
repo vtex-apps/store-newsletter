@@ -28,7 +28,7 @@ function FormEmailInput(props: Props) {
 
   const { invalidEmail } = useNewsletterState()
   const dispatch = useNewsletterDispatch()
-  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const { withModifiers } = useCssHandles(CSS_HANDLES, { classes })
   const intl = useIntl()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,12 @@ function FormEmailInput(props: Props) {
   }
 
   return (
-    <div className={handles.emailInputContainer}>
+    <div
+      className={`${withModifiers(
+        'emailInputContainer',
+        invalidEmail ? 'invalid' : ''
+      )}`}
+    >
       <Input
         id="newsletter-input-email"
         type="email"

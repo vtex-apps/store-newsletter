@@ -28,7 +28,7 @@ function FormPhoneInput(props: Props) {
 
   const { invalidPhone } = useNewsletterState()
   const dispatch = useNewsletterDispatch()
-  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const { withModifiers } = useCssHandles(CSS_HANDLES, { classes })
   const intl = useIntl()
 
   // Initialize `phone` context value to signal that there is a FormPhoneInput
@@ -40,7 +40,12 @@ function FormPhoneInput(props: Props) {
   }
 
   return (
-    <div className={handles.phoneInputContainer}>
+    <div
+      className={`${withModifiers(
+        'phoneInputContainer',
+        invalidPhone ? 'invalid' : ''
+      )}`}
+    >
       <Input
         id="newsletter-input-phone"
         name="newsletter"
