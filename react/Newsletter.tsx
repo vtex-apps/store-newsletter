@@ -7,6 +7,7 @@ import {
   useNewsletterDispatch,
   useNewsletterState,
   MutationArguments,
+  State,
 } from './components/NewsletterContext'
 import {
   validateEmail,
@@ -22,7 +23,13 @@ export const CSS_HANDLES = [
 
 interface Props {
   ErrorState?: ComponentType
-  SuccessState?: ComponentType
+  SuccessState?: ComponentType<{
+    subscribedUserData?: {
+      email: State['email']
+      name: State['name']
+      phone: State['phone']
+    }
+  }>
   LoadingState?: ComponentType
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
@@ -50,7 +57,7 @@ function Newsletter(props: PropsWithChildren<Props>) {
 
   if (submission.data?.subscribeNewsletter) {
     return SuccessState ? (
-      <SuccessState />
+      <SuccessState subscribedUserData={{ email, name, phone }} />
     ) : (
       <p className={handles.defaultSuccessMessage}>
         <FormattedMessage id="store/newsletter-submit-success.default" />
