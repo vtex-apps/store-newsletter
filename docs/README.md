@@ -55,39 +55,39 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 ### `newsletter-form` props
 
-| Prop name      | Type    | Description                                                                                                                                                               | Default value |
-| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `ErrorState`   | `block` | Block to be rendered if the submission of the form fails. If none is passed, a default error component will be rendered.                                                  | `undefined`   |
-| `SuccessState` | `block` | Block to be rendered if form submission succeeds. If none is passed, a default success component will be rendered.                                                        | `undefined`   |
-| `LoadingState` | `block` | Block to be rendered while the form submission is loading. If none is passed, the default behavior is for the submit button to show a spinner during this loading period. | `undefined`   |
-| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
+| Prop name      | Type               | Description                                                                                                                                                                                                                                                         | Default value |
+| -------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `ErrorState`   | `block`            | Block to be rendered if the submission of the form fails. If none is passed, a default error component will be rendered.                                                                                                                                            | `undefined`   |
+| `SuccessState` | `block`            | Block to be rendered if form submission succeeds. If none is passed, a default success component will be rendered.                                                                                                                                                  | `undefined`   |
+| `LoadingState` | `block`            | Block to be rendered while the form submission is loading. If none is passed, the default behavior is for the submit button to show a spinner during this loading period.                                                                                           | `undefined`   |
+| `classes`      | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component. | `undefined`   |
 
 ### `newsletter-input-email` props
 
-| Prop name         | Type     | Description                                    | Default value                                                            |
-| ----------------- | -------- | ---------------------------------------------- | ------------------------------------------------------------------------ |
-| `placeholderText` | `string` | Placeholder text for the email input.          | `Enter your email address` (translated according to the store's locale). |
-| `inputLabel`      | `string` | Label for the email input.                     | `null`                                                                   |
-| `errorMessage`    | `string` | Error message to be shown if email is invalid. | `Invalid email address` (translated according to the store's locale).    |
-| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
+| Prop name         | Type               | Description                                                                                                                                                                                                                                                         | Default value                                                            |
+| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `placeholderText` | `string`           | Placeholder text for the email input.                                                                                                                                                                                                                               | `Enter your email address` (translated according to the store's locale). |
+| `inputLabel`      | `string`           | Label for the email input.                                                                                                                                                                                                                                          | `null`                                                                   |
+| `errorMessage`    | `string`           | Error message to be shown if email is invalid.                                                                                                                                                                                                                      | `Invalid email address` (translated according to the store's locale).    |
+| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component. | `undefined`                                                              |
 
 ### `newsletter-input-name` props
 
-| Prop name         | Type     | Description                                       | Default value                                                   |
-| ----------------- | -------- | ------------------------------------------------- | --------------------------------------------------------------- |
-| `placeholderText` | `string` | Placeholder text for name input.                  | `Enter your name` (translated according to the store's locale). |
-| `inputLabel`      | `string` | Label for the name input.                         | `null`                                                          |
-| `errorMessage`    | `string` | Error message to be shown if name input is empty. | `Invalid name` (translated according to the store's locale).    |
-| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
+| Prop name         | Type               | Description                                                                                                                                                                                                                                                         | Default value                                                   |
+| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `placeholderText` | `string`           | Placeholder text for name input.                                                                                                                                                                                                                                    | `Enter your name` (translated according to the store's locale). |
+| `inputLabel`      | `string`           | Label for the name input.                                                                                                                                                                                                                                           | `null`                                                          |
+| `errorMessage`    | `string`           | Error message to be shown if name input is empty.                                                                                                                                                                                                                   | `Invalid name` (translated according to the store's locale).    |
+| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component. | `undefined`                                                     |
 
 ### `newsletter-input-phone` props
 
-| Prop name         | Type     | Description                                        | Default value                                                    |
-| ----------------- | -------- | -------------------------------------------------- | ---------------------------------------------------------------- |
-| `placeholderText` | `string` | Placeholder text for phone input.                  | `Enter your phone` (translated according to the store's locale). |
-| `inputLabel`      | `string` | Label for the phone input.                         | `null`                                                           |
-| `errorMessage`    | `string` | Error message to be shown if phone input is empty. | `Invalid phone` (translated according to the store's locale).    |
-| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
+| Prop name         | Type               | Description                                                                                                                                                                                                                                                         | Default value                                                    |
+| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `placeholderText` | `string`           | Placeholder text for phone input.                                                                                                                                                                                                                                   | `Enter your phone` (translated according to the store's locale). |
+| `inputLabel`      | `string`           | Label for the phone input.                                                                                                                                                                                                                                          | `null`                                                           |
+| `errorMessage`    | `string`           | Error message to be shown if phone input is empty.                                                                                                                                                                                                                  | `Invalid phone` (translated according to the store's locale).    |
+| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component. | `undefined`                                                      |
 
 ### `newsletter-checkbox-confirmation` props
 
@@ -123,12 +123,16 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 | `defaultErrorMessage`           |
 | `defaultSuccessMessage`         |
 | `emailInputContainer`           |
+| `emailInputContainer--invalid`  |
 | `emailInputLabel`               |
 | `formSubmitContainer`           |
+| `formSubmitContainer--invalid`  |
 | `nameInputContainer`            |
+| `nameInputContainer--invalid`   |
 | `nameInputLabel`                |
 | `newsletterForm`                |
 | `phoneInputContainer`           |
+| `phoneInputContainer--invalid`  |
 | `phoneInputLabel`               |
 
 <!-- DOCS-IGNORE:start -->
