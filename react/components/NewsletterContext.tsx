@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import { MutationFunction, useMutation } from 'react-apollo'
 
-import subscribeNewsletterMutation from './graphql/subscribeNewsletter.gql'
+import subscribeNewsletterMutation from '../graphql/subscribeNewsletter.gql'
 
 interface SubmissionState {
   error: undefined | ApolloError
