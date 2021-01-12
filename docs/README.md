@@ -33,6 +33,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 | `newsletter-input-name`            | Renders an name input in the newsletter form.                                                                        |
 | `newsletter-input-phone`           | Renders an phone input in the newsletter form.                                                                       |
 | `newsletter-checkbox-confirmation` | Renders a confirmation checkbox in the newsletter form.                                                              |
+| `newsletter-hidden-field`          | Doesn't render anything, but enables custom fields to be sent when a user subscribes to the store's newsletter.      |
 | `newsletter-submit`                | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders a `Submit` button for the newsletter form.         |
 
 2. In the desired store template, such as the `store.home`, add the `newsletter-form` block and its desired children:
@@ -109,23 +110,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 | Prop name | Type     | Description                 | Default value |
 | --------- | -------- | --------------------------- | ------------- |
-| `customFields`     | `CustomField[]` | An array of `CustomField` objects.             | `undefined`   |
-
-The `CustomField` object enables you to specify a certain custom user field that should always be sent along with a user's newsletter subscription. It has the following format:
-
-```ts
-interface CustomField {
-  fieldName: string,
-  dynamicValue?: "bindingId" | "bindingUrl",
-  value?: string | number | boolean
-}
-```
-
-- `fieldName` should match the field's name in your Master Data user schema.
-
-- `dynamicValue` currently only supports `bindingId` and `bindingUrl`, and both these values will be calculated by `newsletter-hidden-field` before sending the newsletter subscription data.
-
-- `value` is just a static value that will always be the same, and will always be sent when users submit the newsletter form. You should either use `value` or `dynamicValue`, never both.
+| `dynamicFields`     | `string[]` | An array of strings that represent dynamic fields that will be sent to the `subscribeNewsletter` mutation call performed when a user subscribes to newsletters. Currently the only supported values to include in this array are: `bindingUrl` and `bindingId`. Notice that these fields should also exist in the store's `Client` entity.             | `undefined`   |
 
 ### `newsletter-submit` props
 
