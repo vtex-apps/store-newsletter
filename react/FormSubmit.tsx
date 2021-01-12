@@ -3,7 +3,7 @@ import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 import { IOMessage } from 'vtex.native-types'
 import { Button } from 'vtex.styleguide'
 
-import { useNewsletterState } from './NewsletterContext'
+import { useNewsletterState } from './components/NewsletterContext'
 
 const CSS_HANDLES = ['formSubmitContainer'] as const
 

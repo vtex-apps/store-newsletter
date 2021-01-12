@@ -8,7 +8,7 @@ import {
   useNewsletterState,
   MutationArguments,
   State,
-} from './NewsletterContext'
+} from './components/NewsletterContext'
 import {
   validateEmail,
   validatePhoneNumber,
@@ -36,7 +36,7 @@ interface Props {
 
 interface CustomField {
   name: string
-  value: string | number | boolean | null
+  value: string | null | undefined
 }
 
 function generateMutationVariables({

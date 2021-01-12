@@ -19,15 +19,17 @@ interface SubmissionState {
 export interface MutationArguments {
   email: string
   fields: {
-    [index: string]: string | number | boolean | undefined | null
     name?: string
     phone?: string
+    bindingUrl?: string
+    bindingId?: string
+    [key: string]: string | undefined | null
   }
 }
 
 interface CustomField {
   name: string
-  value: string | number | boolean | null
+  value: string | undefined | null
 }
 
 export interface State {

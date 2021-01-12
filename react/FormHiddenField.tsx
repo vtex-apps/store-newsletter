@@ -1,40 +1,34 @@
 import { useEffect } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 
-import { useNewsletterDispatch } from './NewsletterContext'
+import { useNewsletterDispatch } from './components/NewsletterContext'
 
-interface CustomFieldInput {
-  fieldName: string
-  value?: string | number | boolean
-  dynamicValue?: 'bindingUrl' | 'bindingId'
-}
+type DynamicField = 'bindingUrl' | 'bindingId'
 
 interface Props {
-  customFields: CustomFieldInput[]
+  dynamicFields: DynamicField[]
 }
 
 interface ResolvedCustomField {
   name: string
-  value: string | number | boolean | null
+  value: string | undefined | null
 }
 
-function FormHiddenField({ customFields = [] }: Props) {
+function FormHiddenField({ dynamicFields = [] }: Props) {
   const dispatch = useNewsletterDispatch()
   const runtime = useRuntime()
 
-  const resolvedCustomFields = customFields.map((customField) => {
+  const resolvedCustomFields = dynamicFields.map((field) => {
     const resolvedCustomField: ResolvedCustomField = {
-      name: customField.fieldName,
+      name: field,
       value: null,
     }
 
-    const { dynamicValue } = customField
-
-    if (customField.value) {
-      resolvedCustomField.value = customField.value
-    } else if (dynamicValue === 'bindingUrl') {
+    if (field === 'bindingUrl') {
       resolvedCustomField.value = runtime.binding?.canonicalBaseAddress ?? null
-    } else if (dynamicValue === 'bindingId') {
+    }
+
+    if (field === 'bindingId') {
       resolvedCustomField.value = runtime.binding?.id ?? null
     }
 
