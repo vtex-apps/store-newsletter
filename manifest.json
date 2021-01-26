@@ -11,14 +11,12 @@
     "docs": "0.x"
   },
   "dependencies": {
-    "vtex.css-handles": "0.x",
+    "vtex.css-handles": "1.x",
     "vtex.styleguide": "9.x",
     "vtex.native-types": "0.x",
     "vtex.store-graphql": "2.x"
   },
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

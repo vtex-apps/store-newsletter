@@ -24,7 +24,7 @@ export interface MutationArguments {
   }
 }
 
-interface State {
+export interface State {
   email: string
   name: string | null
   phone: string | null
