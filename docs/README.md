@@ -110,7 +110,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 | Prop name | Type     | Description                 | Default value |
 | --------- | -------- | --------------------------- | ------------- |
-| `dynamicFields`     | `string[]` | An array of strings that represent dynamic fields that will be sent to the `subscribeNewsletter` mutation call performed when a user subscribes to newsletters. Currently the only supported values to include in this array are: `bindingUrl` and `bindingId`. Notice that these fields should also exist in the store's `Client` entity.             | `undefined`   |
+| `dynamicFields`     | `Array<'bindingUrl' | 'bindingId'>` | An array of strings that represent dynamic fields that will be sent to the `subscribeNewsletter` mutation call performed when a user subscribes to newsletters. Currently the only supported values to include in this array are: `bindingUrl` and `bindingId`. Notice that these fields should also exist in the store's `Client` entity.             | `undefined`   |
 
 ### `newsletter-submit` props
 
