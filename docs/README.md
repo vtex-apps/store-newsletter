@@ -33,7 +33,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 | `newsletter-input-name`            | Renders an name input in the newsletter form.                                                                        |
 | `newsletter-input-phone`           | Renders an phone input in the newsletter form.                                                                       |
 | `newsletter-checkbox-confirmation` | Renders a confirmation checkbox in the newsletter form.                                                              |
-| `newsletter-hidden-field`          | Doesn't render anything, but enables custom fields to be sent when a user subscribes to the store's newsletter.      |
+| `newsletter-hidden-field`          | Doesn't render anything, but enables hidden fields on the form to fetch custom data and save them in the store's [Master Data](https://help.vtex.com/en/tutorial/what-is-master-data--4otjBnR27u4WUIciQsmkAw) whenever a user subscribes to the newsletter. |
 | `newsletter-submit`                | ![mandatory](https://img.shields.io/badge/-Mandatory-red) Renders a `Submit` button for the newsletter form.         |
 
 2. In the desired store template, such as the `store.home`, add the `newsletter-form` block and its desired children:
@@ -110,7 +110,7 @@ Now, you are able to use all blocks exported by the `store-newsletter` app. Chec
 
 | Prop name | Type     | Description                 | Default value |
 | --------- | -------- | --------------------------- | ------------- |
-| `dynamicFields`     | `Array<'bindingUrl' | 'bindingId'>` | An array of strings that represent dynamic fields that will be sent to the `subscribeNewsletter` mutation call performed when a user subscribes to newsletters. Currently the only supported values to include in this array are: `bindingUrl` and `bindingId`. Notice that these fields should also exist in the store's `Client` entity.             | `undefined`   |
+| `dynamicFields` | `[enum]` | Desired hidden fields responsible for saving the user's custom data on [Master Data](https://help.vtex.com/en/tutorial/what-is-master-data--4otjBnR27u4WUIciQsmkAw) once the newsletter form is submitted. Notice that the name of the fields must be written in an array and represent which user data they save. Possible values are: `bindingUrl` and `bindingId`. *Caution*: To properly save the data, you must also [create the desired filters](https://help.vtex.com/en/tutorial/how-can-i-create-a-field-in-master-data--frequentlyAskedQuestions_1829) in the Master Data's `Client` entity.  | `undefined` |
 
 ### `newsletter-submit` props
 
