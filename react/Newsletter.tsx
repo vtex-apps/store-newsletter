@@ -34,9 +34,51 @@ interface Props {
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
+interface CustomField {
+  name: string
+  value: string | null | undefined
+}
+
+function generateMutationVariables({
+  email,
+  name,
+  phone,
+  customFields,
+}: {
+  email: string
+  name: string | undefined | null
+  phone: string | undefined | null
+  customFields: CustomField[] | null
+}) {
+  const variables: MutationArguments = { email, fields: {} }
+
+  if (name) {
+    variables.fields.name = name
+  }
+
+  if (phone) {
+    variables.fields.phone = phone
+  }
+
+  if (customFields) {
+    customFields.forEach((customField) => {
+      variables.fields[customField.name] = customField.value
+    })
+  }
+
+  return variables
+}
+
 function Newsletter(props: PropsWithChildren<Props>) {
   const { ErrorState, SuccessState, LoadingState, classes, children } = props
-  const { email, name, phone, submission, subscribe } = useNewsletterState()
+  const {
+    email,
+    name,
+    phone,
+    submission,
+    subscribe,
+    customFields,
+  } = useNewsletterState()
 
   const dispatch = useNewsletterDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
@@ -63,20 +105,6 @@ function Newsletter(props: PropsWithChildren<Props>) {
         <FormattedMessage id="store/newsletter-submit-success.default" />
       </p>
     )
-  }
-
-  function generateMutationVariables() {
-    const variables: MutationArguments = { email, fields: {} }
-
-    if (name) {
-      variables.fields.name = name
-    }
-
-    if (phone) {
-      variables.fields.phone = phone
-    }
-
-    return variables
   }
 
   function validateFormInputs() {
@@ -117,7 +145,12 @@ function Newsletter(props: PropsWithChildren<Props>) {
       return
     }
 
-    const mutationVariables = generateMutationVariables()
+    const mutationVariables = generateMutationVariables({
+      email,
+      name,
+      phone,
+      customFields,
+    })
 
     // The '.catch' here is to prevent 'unhandled promise rejection'.
     // Proper error handling for this is implemented by NewsletterContext
