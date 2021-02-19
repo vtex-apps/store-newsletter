@@ -1,6 +1,7 @@
 import React, { ComponentType, PropsWithChildren, FormEvent } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { usePixel } from 'vtex.pixel-manager'
+import { PixelData } from 'vtex.pixel-manager/react/PixelEventTypes'
 
 import {
   NewsletterContextProvider,
@@ -109,14 +110,14 @@ function Newsletter(props: PropsWithChildren<Props>) {
       phone,
     }
 
-    const pixelEvent = customEventId
+    const pixelEvent: PixelData = customEventId
       ? {
           id: customEventId,
-          event: 'vtex:newsletterSubscription',
+          event: 'newsletterSubscription',
           items: pixelData,
         }
       : {
-          event: 'vtex:newsletterSubscription',
+          event: 'newsletterSubscription',
           items: pixelData,
         }
 
