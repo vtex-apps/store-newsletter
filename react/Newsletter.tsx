@@ -20,7 +20,7 @@ interface Props {
   ErrorState?: ComponentType
   SuccessState?: ComponentType
   LoadingState?: ComponentType
-  CustomEventId?: string
+  customEventId?: string
 }
 
 const CSS_HANDLES = ['newsletterForm'] as const
@@ -30,7 +30,7 @@ function Newsletter(props: PropsWithChildren<Props>) {
     ErrorState,
     SuccessState,
     LoadingState,
-    CustomEventId,
+    customEventId,
     children,
   } = props
 
@@ -109,9 +109,9 @@ function Newsletter(props: PropsWithChildren<Props>) {
       phone,
     }
 
-    const pixelEvent = CustomEventId
+    const pixelEvent = customEventId
       ? {
-          id: CustomEventId,
+          id: customEventId,
           event: 'vtex:newsletterSubscription',
           items: pixelData,
         }
