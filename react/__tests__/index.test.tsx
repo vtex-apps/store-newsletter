@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, fireEvent, waitFor } from '@vtex/test-tools/react'
+import { usePixel } from 'vtex.pixel-manager'
 
 import Newsletter from '../Newsletter'
 import FormEmailInput from '../FormEmailInput'
@@ -7,6 +8,12 @@ import FormNameInput from '../FormNameInput'
 import FormPhoneInput from '../FormPhoneInput'
 import FormSubmit from '../FormSubmit'
 import subscribeNewsletter from '../graphql/subscribeNewsletter.gql'
+
+const mockedUsePixel = usePixel as jest.Mock<ReturnType<typeof usePixel>>
+
+beforeEach(() => {
+  mockedUsePixel().push.mockReset()
+})
 
 const EMAIL_PLACEHOLDER_MESSAGE_ID =
   'store/newsletter-input-email.placeholderText.default'
@@ -125,6 +132,11 @@ describe('Reacting to mutation results', () => {
     fireEvent.click(submit)
 
     const thanks = await waitFor(() => getByText('Thanks for subscribing!'))
+
+    expect(mockedUsePixel().push).toHaveBeenCalledWith({
+      event: 'newsletterSubscription',
+      data: { email: validEmail, name: validName, phone: validPhone },
+    })
 
     expect(thanks).toBeTruthy()
   })
